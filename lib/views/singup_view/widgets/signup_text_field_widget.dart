@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/loginProcesses/login_validation.dart';
+import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 import 'package:myf2app/theme/theme.dart';
-import 'package:myf2app/views/ui_helper.dart';
 
-class TextFieldWidget extends StatelessWidget {
+import '../../ui_helper.dart';
+
+class SignupTextFieldWidget extends StatelessWidget {
   final TextInputType textInputType;
-
   final String requiredText;
   final String hintText;
-  LoginValidation loginValidation = new LoginValidation();
-  TextFieldWidget({
+  SignupValidation signupValidation = new SignupValidation();
+  SignupTextFieldWidget({
     Key key,
     @required this.textInputType,
     @required this.requiredText,
@@ -30,8 +30,8 @@ class TextFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
         ),
-        validator: loginValidation.tcValidation,
-        onChanged: (value) => loginValidation.tcno = value,
+        validator: signupValidation.tcValidation,
+        onChanged: (value) => signupValidation.tcno = value,
       ),
     );
   }
