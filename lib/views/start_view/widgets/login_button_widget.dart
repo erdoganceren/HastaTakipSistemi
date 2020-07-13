@@ -21,7 +21,7 @@ Widget loginButton(context) => Container(
       child: FlatButton(
         textColor: Colors.white,
         onPressed: () {
-          Navigator.push(context, FadeRoute(page: LoginView()));
+          Navigator.pushReplacement(context, FadeRoute(page: LoginView()));
         },
         child: Text("Giriş Yap"),
       ),
