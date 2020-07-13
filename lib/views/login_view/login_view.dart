@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
+import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/views/singup_view/signup_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/fade_route_widget.dart';
@@ -28,28 +29,62 @@ class LoginView extends StatelessWidget {
           key: loginValidation.formKey,
           child: Column(
             children: [
-              Header(),
-              TextFieldWidget(
-                requiredText: UIHelper.tcRequiredText,
-                textInputType: TextInputType.number,
-                hintText: UIHelper.tcHintText,
-              ),
-              PasswordFieldWidget(
-                requiredText: UIHelper.passwordRequiredText,
-                textInputType: TextInputType.text,
-                hintText: UIHelper.passwordHintText,
-              ),
-              SubmitButton(),
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context, FadeRoute(page: SignupView()));
-                },
-                child: Text(
-                  "Hesap oluştur",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
+              Expanded(flex: 1, child: Header()),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: TextFieldWidget(
+                        requiredText: UIHelper.tcRequiredText,
+                        textInputType: TextInputType.number,
+                        hintText: UIHelper.tcHintText,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: PasswordFieldWidget(
+                        requiredText: UIHelper.passwordRequiredText,
+                        textInputType: TextInputType.text,
+                        hintText: UIHelper.passwordHintText,
+                      ),
+                    ),
+                    Expanded(flex: 2, child: SubmitButton()),
+                    Expanded(
+                      flex: 1,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context, FadeRoute(page: SignupView()));
+                        },
+                        child: Text(
+                          "Hesap oluştur",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Spacer(flex: 2),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        height: 169,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                                bottom: 10,
+                                right: 10,
+                                child: Text(
+                                  UIHelper.developedByText,
+                                  style: themeData.textTheme.display4,
+                                ))
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               )
             ],

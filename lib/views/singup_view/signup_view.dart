@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/signupProcesses/signup_validation.dart';
+import 'package:myf2app/theme/theme.dart';
+import 'package:myf2app/views/singup_view/widgets/signup_password_field_widget.dart';
+import 'package:myf2app/views/singup_view/widgets/signup_text_field_widget.dart';
 import 'package:myf2app/widgets/header_widget.dart';
 import 'package:myf2app/views/login_view/widgets/password_fied_widget.dart';
 import 'package:myf2app/views/login_view/widgets/text_field_widget.dart';
@@ -28,20 +31,45 @@ class SignupView extends StatelessWidget {
           key: signupValidation.formKey,
           child: Column(
             children: [
-              Header(),
-              TitleFieldWidget(),
-              TextFieldWidget(
-                requiredText: UIHelper.tcRequiredText,
-                textInputType: TextInputType.number,
-                hintText: UIHelper.tcHintText,
-              ),
-              PasswordFieldWidget(
-                requiredText: UIHelper.passwordRequiredText,
-                textInputType: TextInputType.text,
-                hintText: UIHelper.passwordHintText,
-              ),
-              SignupSubmitButton(),
-              alreadyHaveAccount(context),
+              Expanded(flex: 1, child: Header()),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    Expanded(flex: 3, child: TitleFieldWidget()),
+                    Expanded(
+                      flex: 3,
+                      child: SignupTextFieldWidget(
+                        requiredText: UIHelper.tcRequiredText,
+                        textInputType: TextInputType.number,
+                        hintText: UIHelper.tcHintText,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: SignupPasswordFieldWidget(
+                        requiredText: UIHelper.passwordRequiredText,
+                        textInputType: TextInputType.text,
+                        hintText: UIHelper.passwordHintText,
+                      ),
+                    ),
+                    Expanded(flex: 3, child: SignupSubmitButton()),
+                    Expanded(flex: 1, child: alreadyHaveAccount(context)),
+                    Expanded(
+                      flex: 5,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                              bottom: 10,
+                              right: 10,
+                              child: Text(UIHelper.developedByText,
+                                  style: themeData.textTheme.display4))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

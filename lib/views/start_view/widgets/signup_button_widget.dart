@@ -21,7 +21,7 @@ Widget signupButton(context) => Container(
       child: FlatButton(
         textColor: Colors.white,
         onPressed: () {
-          Navigator.push(context, FadeRoute(page: SignupView()));
+          Navigator.pushReplacement(context, FadeRoute(page: SignupView()));
         },
         child: Text("Kayıt Ol"),
       ),

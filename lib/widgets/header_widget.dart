@@ -7,17 +7,28 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenAwareHeight(240, context),
-      decoration: BoxDecoration(
-        color: UIHelper.loginHeaderBackgroundColor,
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(screenAwareWidth(30, context)),
+        decoration: BoxDecoration(
+          color: UIHelper.loginHeaderBackgroundColor,
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(screenAwareWidth(30, context)),
+          ),
+          image: DecorationImage(
+              image: AssetImage(
+                "assets/images/header.jpg",
+              ),
+              fit: BoxFit.fill),
         ),
-      ),
-      child: Center(
-        child:
-            Text(UIHelper.loginHeaderText, style: themeData.textTheme.headline),
-      ),
-    );
+        child: Stack(
+          children: [
+            Positioned(
+              top: 30,
+              left: 18,
+              child: Text(
+                UIHelper.companyText,
+                style: themeData.textTheme.display3,
+              ),
+            ),
+          ],
+        ));
   }
 }

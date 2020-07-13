@@ -7,6 +7,12 @@ ThemeData get themeData => ThemeData.light().copyWith(
         display1: TextStyle(color: Colors.white),
         display2: TextStyle(
             color: Colors.white, fontSize: 28, fontWeight: FontWeight.w600),
+        display3: TextStyle(
+            color: Colors.black.withOpacity(0.4),
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.4,
+            fontSize: 18),
+        display4: TextStyle(color: Colors.white.withOpacity(0.6)),
         headline: TextStyle(color: Colors.blue, fontSize: 28),
       ),
       inputDecorationTheme: InputDecorationTheme(

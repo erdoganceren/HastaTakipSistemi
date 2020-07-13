@@ -19,19 +19,21 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
-      child: TextFormField(
-        autocorrect: true,
-        obscureText: false,
-        keyboardType: textInputType,
-        textInputAction: TextInputAction.done,
-        cursorColor: UIHelper.textFieldCursorColor,
-        style: themeData.textTheme.display1,
-        decoration: InputDecoration(
-          hintText: hintText,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Center(
+        child: TextFormField(
+          autocorrect: true,
+          obscureText: false,
+          keyboardType: textInputType,
+          textInputAction: TextInputAction.done,
+          cursorColor: UIHelper.textFieldCursorColor,
+          style: themeData.textTheme.display1,
+          decoration: InputDecoration(
+            hintText: hintText,
+          ),
+          validator: loginValidation.tcValidation,
+          onChanged: (value) => loginValidation.tcno = value,
         ),
-        validator: loginValidation.tcValidation,
-        onChanged: (value) => loginValidation.tcno = value,
       ),
     );
   }
