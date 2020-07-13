@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'theme/theme.dart';
 import 'views/home_view/home_view.dart';
-import 'views/login_view/login_view.dart';
 import 'views/start_view/start_view.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.blue,
+      statusBarColor: Colors.pink,
+      statusBarBrightness: Brightness.light));
   runApp(MyApp());
 }
 
