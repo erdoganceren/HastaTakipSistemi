@@ -11,7 +11,7 @@ ThemeData get themeData => ThemeData.light().copyWith(
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(horizontal: 10),
         filled: true,
-        labelStyle: TextStyle(color: Colors.black.withOpacity(0.7)),
+        labelStyle: TextStyle(color: Colors.black.withOpacity(0.8)),
         hintStyle: TextStyle(
           color: Colors.white.withOpacity(0.8),
         ),
