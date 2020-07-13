@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'models/theme/theme.dart';
+import 'theme/theme.dart';
 import 'views/home_view/home_view.dart';
 import 'views/login_view/login_view.dart';
+import 'views/start_view/start_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ Widget _getStartupScreen() {
   // local'de daha önceden giriş yapıp yapıldığı kontrol edilecek.
 
   if (true) {
-    return LoginView();
+    return StartView();
   }
 
   return HomeView();

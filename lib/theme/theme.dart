@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 ThemeData get themeData => ThemeData.light().copyWith(
       backgroundColor: Colors.blue,
-      buttonColor: Colors.blue,
-      scaffoldBackgroundColor: Colors.blue,
+      scaffoldBackgroundColor: Colors.blue[200],
       textTheme: TextTheme(
         display1: TextStyle(color: Colors.white),
+        display2: TextStyle(
+            color: Colors.white, fontSize: 28, fontWeight: FontWeight.w600),
         headline: TextStyle(color: Colors.blue, fontSize: 28),
       ),
       inputDecorationTheme: InputDecorationTheme(

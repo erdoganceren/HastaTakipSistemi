@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/loginProcesses/login_validation.dart';
-import 'package:myf2app/views/ui_helper.dart';
+import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 
-class SubmitButton extends StatefulWidget {
+import '../../ui_helper.dart';
+
+class SignupSubmitButton extends StatefulWidget {
   @override
-  _SubmitButtonState createState() => _SubmitButtonState();
+  _SignupSubmitButtonState createState() => _SignupSubmitButtonState();
 }
 
-class _SubmitButtonState extends State<SubmitButton> {
-  LoginValidation loginValidation = LoginValidation();
-  bool isLoginSuccess = true;
+class _SignupSubmitButtonState extends State<SignupSubmitButton> {
+  SignupValidation signupValidation = SignupValidation();
+  bool isSignUpSuccess = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,24 +23,24 @@ class _SubmitButtonState extends State<SubmitButton> {
             textColor: Colors.white,
             splashColor: Colors.blue,
             child: Text(
-              "Giriş",
+              "Kayıt Ol",
             ),
             color: UIHelper.backgroundColorPrimary,
             onPressed: () {
               setState(() {
-                isLoginSuccess = loginValidation.loginValidate(context);
+                isSignUpSuccess = signupValidation.signupValidate(context);
               });
             },
           ),
         ),
-        invalidLoginText,
+        invalidSignupText,
       ],
     );
   }
 
-  Widget get invalidLoginText {
+  Widget get invalidSignupText {
     // eşitlik kullanmadan koşulu yazma. değişkenin null olma ihtimali var.
-    if (isLoginSuccess == false) {
+    if (isSignUpSuccess == false) {
       return Text("Geçersiz TC ve şifre girişi",
           style: TextStyle(fontSize: 14, color: Colors.red[700]));
     }

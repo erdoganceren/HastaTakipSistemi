@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/models/theme/theme.dart';
+import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/ui_helper.dart';
 

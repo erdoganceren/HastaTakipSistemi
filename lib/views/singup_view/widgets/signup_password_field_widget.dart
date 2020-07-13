@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/loginProcesses/login_validation.dart';
+import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 import 'package:myf2app/theme/theme.dart';
-import 'package:myf2app/views/ui_helper.dart';
 
-class PasswordFieldWidget extends StatefulWidget {
+import '../../ui_helper.dart';
+
+class SignupPasswordFieldWidget extends StatefulWidget {
   final TextInputType textInputType;
   final String requiredText;
   final String hintText;
-  const PasswordFieldWidget({
+  const SignupPasswordFieldWidget({
     Key key,
     @required this.textInputType,
     @required this.requiredText,
@@ -15,12 +16,13 @@ class PasswordFieldWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PasswordFieldWidgetState createState() => _PasswordFieldWidgetState();
+  _SignupPasswordFieldWidgetState createState() =>
+      _SignupPasswordFieldWidgetState();
 }
 
-class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
+class _SignupPasswordFieldWidgetState extends State<SignupPasswordFieldWidget> {
   bool isTextHidden = true;
-  LoginValidation loginValidation = new LoginValidation();
+  SignupValidation signupValidation = new SignupValidation();
 
   void _toggleVisibility() {
     setState(() {
@@ -44,8 +46,8 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
               icon: isTextHidden ? UIHelper.visibilityOff : UIHelper.visibility,
               onPressed: _toggleVisibility,
             )),
-        validator: loginValidation.passwordValidation,
-        onChanged: (value) => loginValidation.password = value,
+        validator: signupValidation.passwordValidation,
+        onChanged: (value) => signupValidation.password = value,
       ),
     );
   }
