@@ -33,21 +33,24 @@ class _SignupPasswordFieldWidgetState extends State<SignupPasswordFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
-      child: TextFormField(
-        cursorColor: UIHelper.textFieldCursorColor,
-        keyboardType: widget.textInputType,
-        autocorrect: false,
-        obscureText: isTextHidden,
-        style: themeData.textTheme.display1,
-        decoration: InputDecoration(
-            hintText: widget.hintText,
-            suffixIcon: IconButton(
-              icon: isTextHidden ? UIHelper.visibilityOff : UIHelper.visibility,
-              onPressed: _toggleVisibility,
-            )),
-        validator: signupValidation.passwordValidation,
-        onChanged: (value) => signupValidation.password = value,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Center(
+        child: TextFormField(
+          cursorColor: UIHelper.textFieldCursorColor,
+          keyboardType: widget.textInputType,
+          autocorrect: false,
+          obscureText: isTextHidden,
+          style: themeData.textTheme.display1,
+          decoration: InputDecoration(
+              hintText: widget.hintText,
+              suffixIcon: IconButton(
+                icon:
+                    isTextHidden ? UIHelper.visibilityOff : UIHelper.visibility,
+                onPressed: _toggleVisibility,
+              )),
+          validator: signupValidation.passwordValidation,
+          onChanged: (value) => signupValidation.password = value,
+        ),
       ),
     );
   }

@@ -10,6 +10,8 @@ class UIHelper {
   static const String loginHeaderText = "Hoşgeldiniz";
   static const String signupSubmitButtonText = "Kayıt Ol";
   static const String signupAlreadyHaveAccount = "Zaten bir hesabın var mı?";
+  static const String developedByText = "İZKA TARADINDAN DESTEKLENMEKTEDİR";
+  static const String companyText = "Aktivİz";
   //COLOR
   static const Color backgroundColorPrimary = Colors.blue;
   static const Color backgroundColorSecondary = Colors.green;

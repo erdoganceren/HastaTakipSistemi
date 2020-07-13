@@ -12,7 +12,6 @@ class _TitleFieldWidgetState extends State<TitleFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         Text(
           "Ünvanınızı Seçin",
