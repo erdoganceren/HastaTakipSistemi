@@ -8,8 +8,7 @@ class DoctorView extends StatelessWidget {
 
       child: Center(
           child: Text("Doktor Home", style: TextStyle(color: Colors.black))),
-=======
-      child: Center(child: Text("Doktor Home",style: TextStyle(color: Colors.black),)),
+
 
     );
   }

@@ -3,8 +3,8 @@ import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/views/ui_helper.dart';
 
 import 'widgets/candidate_member_card_widget.dart';
-import 'widgets/card_color_widget.dart';
-import 'widgets/title_icon.dart';
+
+import 'widgets/title_icon_widget.dart';
 
 class AdminView extends StatefulWidget {
   @override

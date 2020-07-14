@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:myf2app/views/admin_view/admin_view.dart';
-=======
+
 
 import 'theme/theme.dart';
 import 'views/home_view/home_view.dart';
