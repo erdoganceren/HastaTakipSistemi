@@ -4,11 +4,7 @@ import 'package:myf2app/views/ui_helper.dart';
 
 import 'widgets/admin_header_widget.dart';
 import 'widgets/candidate_member_card_widget.dart';
-<<<<<<< Updated upstream
-
-=======
 import 'widgets/card_color_widget.dart';
->>>>>>> Stashed changes
 import 'widgets/title_icon_widget.dart';
 
 class AdminView extends StatefulWidget {
