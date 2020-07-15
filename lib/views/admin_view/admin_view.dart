@@ -58,7 +58,7 @@ class _AdminViewState extends State<AdminView> {
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 30,
+                      top: 20, //30,
                       left: 18,
                       child: Text(
                         UIHelper.companyText,
@@ -68,7 +68,7 @@ class _AdminViewState extends State<AdminView> {
                     ),
                     Align(
                       alignment: Alignment(0, 0.5),
-                      child: Text("Admin Panel",
+                      child: Text("Admin Panel!a",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                     ),
                   ],
