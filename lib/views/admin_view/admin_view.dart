@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/views/ui_helper.dart';
 
+import 'widgets/admin_header_widget.dart';
 import 'widgets/candidate_member_card_widget.dart';
+<<<<<<< Updated upstream
 
+=======
+import 'widgets/card_color_widget.dart';
+>>>>>>> Stashed changes
 import 'widgets/title_icon_widget.dart';
 
 class AdminView extends StatefulWidget {
@@ -53,27 +58,7 @@ class _AdminViewState extends State<AdminView> {
           children: [
             Expanded(
               flex: 1,
-              child: Container(
-                color: Color(0xffc0392b),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: 30,
-                      left: 18,
-                      child: Text(
-                        UIHelper.companyText,
-                        style: themeData.textTheme.display3
-                            .copyWith(color: Colors.white.withOpacity(0.6)),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(0, 0.5),
-                      child: Text("Admin Panel",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                    ),
-                  ],
-                ),
-              ),
+              child: adminHeader,
             ),
             Expanded(
               flex: 6,
