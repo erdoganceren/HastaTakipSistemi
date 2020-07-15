@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 import 'package:myf2app/utils/utils.dart';
+import 'package:myf2app/views/ui_helper.dart';
+import 'package:provider/provider.dart';
 
-class TitleFieldWidget extends StatefulWidget {
-  @override
-  _TitleFieldWidgetState createState() => _TitleFieldWidgetState();
-}
-
-class _TitleFieldWidgetState extends State<TitleFieldWidget> {
-  SignupValidation signupValidation = new SignupValidation();
+class TitleField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         Text(
-          "Ünvanınızı Seçin",
+          UIHelper.selectTitleText,
           style: TextStyle(
               fontSize: screenAwareHeight(15, context), color: Colors.white),
         ),
@@ -30,7 +26,7 @@ class _TitleFieldWidgetState extends State<TitleFieldWidget> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Doktor",
+                UIHelper.doctorText,
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -38,25 +34,31 @@ class _TitleFieldWidgetState extends State<TitleFieldWidget> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Hasta",
-                style: TextStyle(color: Colors.white),
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  UIHelper.patientText,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Hasta\nYakını",
-                style: TextStyle(color: Colors.white),
+              child: Center(
+                child: Text(
+                  UIHelper.patientRelativeText,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ],
-          isSelected: signupValidation.titleList,
+          isSelected:
+              Provider.of<SignupValidation>(context, listen: true).titleList,
           onPressed: (int index) {
-            setState(() {
-              signupValidation.titleList.setAll(0, [false, false, false]);
-              signupValidation.titleList[index] = true;
-            });
+            Provider.of<SignupValidation>(context, listen: false).titleList =
+                index;
           },
         ),
       ]),

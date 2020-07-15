@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/views/ui_helper.dart';
+import 'package:provider/provider.dart';
 
-class SubmitButton extends StatefulWidget {
-  @override
-  _SubmitButtonState createState() => _SubmitButtonState();
-}
-
-class _SubmitButtonState extends State<SubmitButton> {
-  LoginValidation loginValidation = LoginValidation();
-  bool isLoginSuccess = true;
+class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,23 +20,14 @@ class _SubmitButtonState extends State<SubmitButton> {
             ),
             color: UIHelper.backgroundColorPrimary,
             onPressed: () {
-              setState(() {
-                isLoginSuccess = loginValidation.loginValidate(context);
-              });
+              Provider.of<LoginValidation>(context, listen: false)
+                  .loginValidate(context);
             },
           ),
         ),
-        invalidLoginText,
+        Text(Provider.of<LoginValidation>(context, listen: true).text,
+            style: TextStyle(color: Colors.red, fontSize: 14))
       ],
     );
-  }
-
-  Widget get invalidLoginText {
-    // eşitlik kullanmadan koşulu yazma. değişkenin null olma ihtimali var.
-    if (isLoginSuccess == false) {
-      return Text("Geçersiz TC ve şifre girişi",
-          style: TextStyle(fontSize: 14, color: Colors.red[700]));
-    }
-    return Text("");
   }
 }

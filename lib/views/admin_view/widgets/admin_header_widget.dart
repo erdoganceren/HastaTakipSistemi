@@ -3,7 +3,7 @@ import 'package:myf2app/theme/theme.dart';
 import '../../ui_helper.dart';
 
 Widget get adminHeader => Container(
-      color: Color(0xffc0392b),
+      color: Color(0xff7f8fa6),
       child: Stack(
         children: [
           Positioned(

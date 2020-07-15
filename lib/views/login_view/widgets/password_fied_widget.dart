@@ -2,32 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/views/ui_helper.dart';
+import 'package:provider/provider.dart';
 
-class PasswordFieldWidget extends StatefulWidget {
+class PasswordField extends StatelessWidget {
   final TextInputType textInputType;
-  final String requiredText;
   final String hintText;
-  const PasswordFieldWidget({
+  const PasswordField({
     Key key,
     @required this.textInputType,
-    @required this.requiredText,
     @required this.hintText,
   }) : super(key: key);
-
-  @override
-  _PasswordFieldWidgetState createState() => _PasswordFieldWidgetState();
-}
-
-class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
-  bool isTextHidden = true;
-  LoginValidation loginValidation = new LoginValidation();
-
-  void _toggleVisibility() {
-    setState(() {
-      isTextHidden = !isTextHidden;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,19 +19,26 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
       child: Center(
         child: TextFormField(
           cursorColor: UIHelper.textFieldCursorColor,
-          keyboardType: widget.textInputType,
+          keyboardType: textInputType,
           autocorrect: false,
-          obscureText: isTextHidden,
+          obscureText: Provider.of<LoginValidation>(context, listen: true)
+              .hiddenPassword,
           style: themeData.textTheme.display1,
           decoration: InputDecoration(
-              hintText: widget.hintText,
+              hintText: hintText,
               suffixIcon: IconButton(
-                icon:
-                    isTextHidden ? UIHelper.visibilityOff : UIHelper.visibility,
-                onPressed: _toggleVisibility,
+                icon: Provider.of<LoginValidation>(context, listen: true)
+                    .visibilityIcon,
+                onPressed: () =>
+                    Provider.of<LoginValidation>(context, listen: false)
+                        .setHiddenPassword(),
               )),
-          validator: loginValidation.passwordValidation,
-          onChanged: (value) => loginValidation.password = value,
+          validator: (value) =>
+              Provider.of<LoginValidation>(context, listen: false)
+                  .passwordValidation(value),
+          onChanged: (value) =>
+              Provider.of<LoginValidation>(context, listen: false).password =
+                  value,
         ),
       ),
     );

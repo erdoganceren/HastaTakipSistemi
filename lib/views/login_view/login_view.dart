@@ -36,16 +36,14 @@ class LoginView extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 2,
-                      child: TextFieldWidget(
-                        requiredText: UIHelper.tcRequiredText,
+                      child: TcTextField(
                         textInputType: TextInputType.number,
                         hintText: UIHelper.tcHintText,
                       ),
                     ),
                     Expanded(
                       flex: 2,
-                      child: PasswordFieldWidget(
-                        requiredText: UIHelper.passwordRequiredText,
+                      child: PasswordField(
                         textInputType: TextInputType.text,
                         hintText: UIHelper.passwordHintText,
                       ),

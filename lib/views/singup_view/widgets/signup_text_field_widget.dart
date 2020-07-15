@@ -4,15 +4,13 @@ import 'package:myf2app/theme/theme.dart';
 
 import '../../ui_helper.dart';
 
-class SignupTextFieldWidget extends StatelessWidget {
+class SignupTcTextField extends StatelessWidget {
   final TextInputType textInputType;
-  final String requiredText;
   final String hintText;
   SignupValidation signupValidation = new SignupValidation();
-  SignupTextFieldWidget({
+  SignupTcTextField({
     Key key,
     @required this.textInputType,
-    @required this.requiredText,
     @required this.hintText,
   }) : super(key: key);
 
@@ -22,6 +20,7 @@ class SignupTextFieldWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Center(
         child: TextFormField(
+          maxLength: 11,
           autocorrect: true,
           obscureText: false,
           keyboardType: textInputType,

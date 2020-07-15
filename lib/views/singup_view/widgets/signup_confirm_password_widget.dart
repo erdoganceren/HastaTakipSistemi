@@ -5,11 +5,11 @@ import 'package:provider/provider.dart';
 
 import '../../ui_helper.dart';
 
-class SignupPasswordField extends StatelessWidget {
+class SignupConfirmPasswordField extends StatelessWidget {
   final TextInputType textInputType;
   final String hintText;
 
-  const SignupPasswordField(
+  const SignupConfirmPasswordField(
       {Key key, @required this.textInputType, @required this.hintText})
       : super(key: key);
   @override
@@ -34,10 +34,10 @@ class SignupPasswordField extends StatelessWidget {
               )),
           validator: (value) =>
               Provider.of<SignupValidation>(context, listen: false)
-                  .passwordValidation(value),
+                  .confirmPasswordValidation(value),
           onChanged: (value) =>
-              Provider.of<SignupValidation>(context, listen: false).password =
-                  value,
+              Provider.of<SignupValidation>(context, listen: false)
+                  .confirmPassword = value,
         ),
       ),
     );

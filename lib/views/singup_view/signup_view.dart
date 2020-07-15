@@ -8,6 +8,7 @@ import 'package:myf2app/views/login_view/widgets/password_fied_widget.dart';
 import 'package:myf2app/views/login_view/widgets/text_field_widget.dart';
 import '../ui_helper.dart';
 import 'widgets/already_have_account_widget.dart';
+import 'widgets/signup_confirm_password_widget.dart';
 import 'widgets/signup_submitbutton_widget.dart';
 import 'widgets/title_field_widget.dart';
 
@@ -36,27 +37,35 @@ class SignupView extends StatelessWidget {
                 flex: 2,
                 child: Column(
                   children: [
-                    Expanded(flex: 3, child: TitleFieldWidget()),
                     Expanded(
                       flex: 3,
-                      child: SignupTextFieldWidget(
-                        requiredText: UIHelper.tcRequiredText,
+                      child: TitleField(),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: SignupTcTextField(
                         textInputType: TextInputType.number,
                         hintText: UIHelper.tcHintText,
                       ),
                     ),
                     Expanded(
                       flex: 3,
-                      child: SignupPasswordFieldWidget(
-                        requiredText: UIHelper.passwordRequiredText,
+                      child: SignupPasswordField(
                         textInputType: TextInputType.text,
                         hintText: UIHelper.passwordHintText,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: SignupConfirmPasswordField(
+                        textInputType: TextInputType.text,
+                        hintText: UIHelper.confirmPasswordHintText,
                       ),
                     ),
                     Expanded(flex: 3, child: SignupSubmitButton()),
                     Expanded(flex: 1, child: alreadyHaveAccount(context)),
                     Expanded(
-                      flex: 5,
+                      flex: 2,
                       child: Stack(
                         children: [
                           Positioned(
