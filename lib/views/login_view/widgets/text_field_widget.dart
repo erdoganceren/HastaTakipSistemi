@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/theme/theme.dart';
+import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -16,14 +17,14 @@ class TcTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: screenAwareWidth(20, context)),
       child: Center(
         child: TextFormField(
-          maxLength: 11,
           autocorrect: true,
           obscureText: false,
+          maxLength: 11,
           keyboardType: textInputType,
-          textInputAction: TextInputAction.done,
+          textInputAction: TextInputAction.next,
           cursorColor: UIHelper.textFieldCursorColor,
           style: themeData.textTheme.display1,
           decoration: InputDecoration(

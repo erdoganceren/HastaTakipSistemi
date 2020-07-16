@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/views/home_view/doctor_view.dart';
-import 'package:myf2app/views/home_view/patient_relative_view.dart';
-import 'package:myf2app/views/home_view/patient_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
-import 'package:myf2app/widgets/fade_route_widget.dart';
-import 'package:provider/provider.dart';
 
 class SignupValidation with ChangeNotifier {
   String _tcno;
   String _password;
   String _confirmPassword;
   //titlefieldwidgettaki ünvanlistesinin nasıl çekeceğim??????
-  List<bool> _titleList = [false, true, false];
+  List<bool> _titleList = [true, false, false];
+
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   bool _hiddenPassword = true;
   Icon _visibilityIcon = UIHelper.visibilityOff;
@@ -44,6 +40,7 @@ class SignupValidation with ChangeNotifier {
   set titleList(int index) {
     _titleList = [false, false, false];
     _titleList[index] = true;
+    print(_titleList);
     notifyListeners();
   }
 

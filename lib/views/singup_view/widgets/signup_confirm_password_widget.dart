@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 import 'package:myf2app/theme/theme.dart';
+import 'package:myf2app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../ui_helper.dart';
@@ -15,7 +16,7 @@ class SignupConfirmPasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: screenAwareWidth(20, context)),
       child: Center(
         child: TextFormField(
           cursorColor: UIHelper.textFieldCursorColor,

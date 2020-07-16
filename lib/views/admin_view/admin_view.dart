@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/adminProcesses/admin_processes.dart';
-import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/candidate_members.dart';
-import 'package:myf2app/views/ui_helper.dart';
-import 'package:provider/provider.dart';
-
 import 'widgets/admin_header_widget.dart';
 import 'widgets/dismissable_card_widget.dart';
 

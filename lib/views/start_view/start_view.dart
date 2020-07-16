@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/theme/theme.dart';
-import 'package:myf2app/utils/utils.dart';
-import 'package:myf2app/views/start_view/widgets/login_button_widget.dart';
-import 'package:myf2app/views/start_view/widgets/signup_button_widget.dart';
+import 'package:myf2app/views/login_view/login_view.dart';
+import 'package:myf2app/views/singup_view/signup_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
+import 'package:myf2app/widgets/fade_route_widget.dart';
+import 'package:myf2app/widgets/footer_widget.dart';
+import 'package:myf2app/widgets/header_widget.dart';
+import 'package:myf2app/widgets/submit_button_widget.dart';
 
 class StartView extends StatelessWidget {
   @override
@@ -12,35 +15,48 @@ class StartView extends StatelessWidget {
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                UIHelper.backgroundColorPrimary,
-                UIHelper.backgroundColorSecondary
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
           child: Column(
             children: [
-              Spacer(flex: 10),
-              Expanded(
-                  flex: 10,
-                  child: Text(UIHelper.startHeaderText,
-                      style: themeData.textTheme.display2)),
-              Expanded(
-                flex: 2,
-                child: signupButton(context),
-              ),
+              header,
+              title,
+              signupButton(context),
               Spacer(flex: 1),
-              Expanded(
-                flex: 2,
-                child: loginButton(context),
-              ),
-              Spacer(flex: 4),
+              loginButton(context),
+              footerStart,
             ],
           )),
     );
   }
+
+  Widget get header => Expanded(
+        flex: 50,
+        child: Header(),
+      );
+  Widget get title => Expanded(
+        flex: 50,
+        child:
+            Text(UIHelper.startHeaderText, style: themeData.textTheme.headline),
+      );
+  Widget signupButton(context) => Expanded(
+        flex: 12,
+        child: SubmitButton(
+          onTap: () {
+            Navigator.pushReplacement(context, FadeRoute(page: SignupView()));
+          },
+          text: UIHelper.startSignUpButtonText,
+        ),
+      );
+  Widget loginButton(context) => Expanded(
+        flex: 12,
+        child: SubmitButton(
+          onTap: () {
+            Navigator.pushReplacement(context, FadeRoute(page: LoginView()));
+          },
+          text: UIHelper.startLoginButtonText,
+        ),
+      );
+  Widget get footerStart => Expanded(
+        flex: 5,
+        child: footer,
+      );
 }

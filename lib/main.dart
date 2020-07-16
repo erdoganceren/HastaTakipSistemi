@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myf2app/core/adminProcesses/admin_processes.dart';
-
 import 'package:myf2app/views/admin_view/admin_view.dart';
 import 'package:provider/provider.dart';
-
 import 'core/loginProcesses/login_validation.dart';
 import 'core/signupProcesses/signup_validation.dart';
 import 'theme/theme.dart';
@@ -13,7 +11,7 @@ import 'views/start_view/start_view.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
+      SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
   runApp(
     MultiProvider(
       providers: [
