@@ -10,6 +10,7 @@ class LoginValidation with ChangeNotifier {
   bool _hiddenPassword = true;
   Icon _visibilityIcon = UIHelper.visibilityOff;
   String _text = "";
+
   // singleton class olarak design edildi.
   static final LoginValidation _loginValidation = LoginValidation._internal();
   factory LoginValidation() {

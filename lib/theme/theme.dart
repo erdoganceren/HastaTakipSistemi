@@ -11,7 +11,7 @@ ThemeData get themeData => ThemeData.light().copyWith(
             fontWeight: FontWeight.w400,
             letterSpacing: 0.4,
             fontSize: 18),
-        display4: TextStyle(color: Colors.black.withOpacity(0.6)),
+        display4: TextStyle(color: Colors.black.withOpacity(0.5)),
         headline: TextStyle(
             color: Colors.black.withOpacity(0.6),
             shadows: [Shadow(color: Colors.teal, blurRadius: 1)],

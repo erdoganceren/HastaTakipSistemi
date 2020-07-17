@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
 
 Widget _getStartupScreen() {
   // local'de daha önceden giriş yapıp yapıldığı kontrol edilecek.
-  return StartView();
+  return AdminView();
   if (true) {
     return AdminView();
   }

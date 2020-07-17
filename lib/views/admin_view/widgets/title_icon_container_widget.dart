@@ -4,8 +4,9 @@ import 'package:myf2app/utils/utils.dart';
 class TitleIconContainer extends StatelessWidget {
   final String title;
   final IconData iconData;
+  final Color color;
 
-  const TitleIconContainer({Key key, this.title, this.iconData})
+  const TitleIconContainer({Key key, this.title, this.iconData, this.color})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,11 +26,13 @@ class TitleIconContainer extends StatelessWidget {
             Icon(
               iconData,
               size: 30,
-              color: Colors.white.withOpacity(0.8),
+              color: color,
             ),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: TextStyle(
+                  color: color,
                   fontSize: screenAwareWidth(11, context),
                   fontWeight: FontWeight.bold),
             )

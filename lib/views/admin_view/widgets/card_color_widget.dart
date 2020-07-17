@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 Color cardColor(String title) {
   switch (title) {
     case "Doktor":
-      return Color(0xff1abc9c);
+      return Color(0xffdcdde1).withOpacity(0.6);
     case "Hasta":
-      return Color(0xff2980b9);
+      return Color(0xffced6e0).withOpacity(0.6);
     case "Hasta Yakını":
-      return Color(0xff3498db);
+      return Color(0xff7f8fa6).withOpacity(0.6);
   }
 }

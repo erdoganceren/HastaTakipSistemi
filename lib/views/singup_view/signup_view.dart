@@ -45,7 +45,7 @@ class SignupView extends StatelessWidget {
         height: screenAwareHeight(447, context),
         child: Column(
           children: [
-            titleMember(context),
+            titleMember,
             tcTextField,
             passwordTextField,
             confirmPasswordTextField,
@@ -55,7 +55,7 @@ class SignupView extends StatelessWidget {
           ],
         ),
       );
-  Widget titleMember(context) => Expanded(
+  Widget get titleMember => Expanded(
         flex: 3,
         child: TitleField(),
       );

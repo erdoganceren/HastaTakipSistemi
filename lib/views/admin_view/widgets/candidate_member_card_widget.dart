@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/theme/theme.dart';
 
 import 'card_color_widget.dart';
 import 'title_icon_widget.dart';
@@ -12,16 +13,18 @@ class CandidateMemberCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(vertical: 4),
       elevation: 6,
-      color: cardColor(model["unvan"]),
+      color: Colors.white,
       child: ListTile(
         leading: Container(child: titleIcon(model["unvan"])),
         title: Text(
           "${model["ad"]} ${model["soyad"]}",
+          style: themeData.textTheme.display1,
         ),
         subtitle: Row(
           children: [
             Text(
               model["tc"],
+              style: themeData.textTheme.display1,
             ),
           ],
         ),
