@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myf2app/core/adminProcesses/admin_processes.dart';
 import 'package:myf2app/views/admin_view/admin_view.dart';
+import 'package:myf2app/views/home_view/patient_view/patient_view.dart';
 import 'package:provider/provider.dart';
 import 'core/loginProcesses/login_validation.dart';
 import 'core/signupProcesses/signup_validation.dart';
@@ -38,9 +39,9 @@ class MyApp extends StatelessWidget {
 
 Widget _getStartupScreen() {
   // local'de daha önceden giriş yapıp yapıldığı kontrol edilecek.
-  return AdminView();
+
   if (true) {
-    return AdminView();
+    return StartView();
   }
 
   return HomeView();

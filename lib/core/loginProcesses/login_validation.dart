@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/views/admin_view/admin_view.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/fade_route_widget.dart';
@@ -39,11 +40,12 @@ class LoginValidation with ChangeNotifier {
   bool loginValidate(BuildContext context) {
     // service ile tcler şifreler getirelecek
     if (formKey.currentState.validate()) {
-      print(_tcno);
-      print(_password);
       if (_tcno == '00000000000' && _password == 'password') {
-        print("2");
         Navigator.pushReplacement(context, FadeRoute(page: HomeView()));
+        return true;
+      }
+      if (_tcno == '11111111111' && _password == 'password') {
+        Navigator.pushReplacement(context, FadeRoute(page: AdminView()));
         return true;
       }
       _text = "Geçersiz TC ve şifre girişi";
