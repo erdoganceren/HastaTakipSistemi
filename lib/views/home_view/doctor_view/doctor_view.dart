@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/models/doctor.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/home_view/doctor_view/widgets/patients_text_widget.dart';
 import 'package:provider/provider.dart';
@@ -7,12 +8,19 @@ import 'widgets/patient_list_widget.dart';
 import 'widgets/search_bar_widget.dart';
 
 class DoctorView extends StatelessWidget {
+  final Doctor model;
+
+  const DoctorView({Key key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
         children: [
-          Positioned(top: 0, left: 0, right: 0, child: doctorCard(context)),
+          Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: doctorCard(context: context, model: model)),
           Positioned(
               top: screenAwareHeight(110, context),
               left: 0,
@@ -37,7 +45,7 @@ class DoctorView extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(child: patientListWidget()),
+                Expanded(child: patientListWidget(model:model)),
               ],
             ),
           ),

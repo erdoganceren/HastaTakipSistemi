@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/clipper/custom_shape_clipper.dart';
+import 'package:myf2app/models/medicine.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/base_view.dart';
@@ -12,7 +13,7 @@ import 'package:myf2app/widgets/check_box_widget.dart';
 import '../../../widgets/header_back_button_widget.dart';
 
 class MedicineView extends StatelessWidget {
-  final Map<String, dynamic> medicine;
+  final Medicine medicine;
   const MedicineView({Key key, this.medicine}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,10 @@ class MedicineView extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(medicine["isim"],
+                      title: Text(medicine.name,
                           style: themeData.textTheme.display1
                               .copyWith(fontWeight: FontWeight.w600)),
-                      subtitle: Text(medicine["detay"],
+                      subtitle: Text(medicine.detail,
                           style: themeData.textTheme.display1
                               .copyWith(fontWeight: FontWeight.w300)),
                       leading: Icon(
@@ -50,7 +51,7 @@ class MedicineView extends StatelessWidget {
                       leading:
                           Icon(Icons.add_alert, color: UIHelper.colorPrimary),
                       title: Text(
-                          "Bu ilaç günde ${medicine["kullanım"]} kere kullanılmalıdır.",
+                          "Bu ilaç günde ${medicine.countOfDay} kere kullanılmalıdır.",
                           style: themeData.textTheme.display1.copyWith(
                               fontWeight: FontWeight.w300, fontSize: 16)),
                     ),
@@ -61,9 +62,9 @@ class MedicineView extends StatelessWidget {
                     Expanded(
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: medicine["kullanım"],
+                        itemCount: medicine.countOfDay,
                         itemBuilder: (context, index) => CheckBox(
-                          time: (24 / medicine["kullanım"] * (index + 1))
+                          time: (24 / medicine.countOfDay * (index + 1))
                               .toStringAsFixed(2),
                         ),
                       ),

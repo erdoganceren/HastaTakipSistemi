@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/theme/theme.dart';
-import '../../ui_helper.dart';
+import 'package:myf2app/views/ui_helper.dart';
 
 Widget get adminHeader => Container(
       color: Color(0xff7f8fa6),

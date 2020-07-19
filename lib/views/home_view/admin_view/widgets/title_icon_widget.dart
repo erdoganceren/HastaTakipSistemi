@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/utils/utils.dart';
-import 'package:myf2app/views/admin_view/widgets/card_color_widget.dart';
-import 'package:myf2app/views/admin_view/widgets/title_icon_container_widget.dart';
 import 'package:myf2app/views/ui_helper.dart';
+import 'title_icon_container_widget.dart';
 
 Widget titleIcon(String title) {
   if (title == "Doktor") {

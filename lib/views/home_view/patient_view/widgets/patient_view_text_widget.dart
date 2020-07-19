@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget get patientViewText => Container(
+Widget get takeMedicineText => Container(
       alignment: Alignment(-0.9, 0),
       child: Text(
         "Kullanılacak İlaçlar",

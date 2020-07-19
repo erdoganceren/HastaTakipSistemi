@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/utils/medicines.dart';
+import 'package:myf2app/models/medicine.dart';
 import 'package:myf2app/views/home_view/medicine_view/medicine_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import '../../../../utils/utils.dart';
 
 class MedicineCard extends StatelessWidget {
-  final Map<String, dynamic> medicine;
-  const MedicineCard({Key key, this.medicine}) : super(key: key);
+  final Medicine medicine;
+  const MedicineCard({Key key, @required this.medicine}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -40,7 +40,7 @@ class MedicineCard extends StatelessWidget {
                 height: screenAwareHeight(10, context),
               ),
               Text(
-                medicine["isim"],
+                medicine.name,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w300,
@@ -58,7 +58,7 @@ class MedicineCard extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: medicine["kullanım"],
+                  itemCount: medicine.countOfDay,
                   itemBuilder: (context, index) => Container(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     alignment: Alignment.center,
@@ -67,7 +67,7 @@ class MedicineCard extends StatelessWidget {
                       children: [
                         Icon(Icons.timer, color: Colors.white),
                         Text(
-                          "${24 / medicine["kullanım"] * (index + 1)}",
+                          "${24 / medicine.countOfDay * (index + 1)}",
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -76,7 +76,7 @@ class MedicineCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "Günde ${medicine["kullanım"]} kez, 1 tablet içilecek.",
+                "Günde ${medicine.countOfDay} kez, 1 tablet içilecek.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,

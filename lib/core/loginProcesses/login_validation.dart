@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/views/admin_view/admin_view.dart';
-import 'package:myf2app/views/home_view/doctor_view/doctor_view.dart';
+import 'package:myf2app/models/doctor.dart';
+import 'package:myf2app/models/patient.dart';
+import 'package:myf2app/utils/temp_datas.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/fade_route_widget.dart';
@@ -8,7 +9,7 @@ import 'package:myf2app/widgets/fade_route_widget.dart';
 class LoginValidation with ChangeNotifier {
   String _tcno;
   String _password;
-  String _userType;
+  var _userModel;
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   bool _hiddenPassword = true;
   Icon _visibilityIcon = UIHelper.visibilityOff;
@@ -23,7 +24,7 @@ class LoginValidation with ChangeNotifier {
 
   get tcno => _tcno;
   get password => _password;
-  get userType => _userType;
+  get userModel => _userModel;
   get formKey => _formKey;
   get hiddenPassword => _hiddenPassword;
   get text => _text;
@@ -43,31 +44,28 @@ class LoginValidation with ChangeNotifier {
   bool loginValidate(BuildContext context) {
     // service ile tcler şifreler getirelecek
     if (formKey.currentState.validate()) {
-      if (_tcno == '00000000000' && _password == 'password') {
-        _userType = "bireysel takip";
-        Navigator.pushReplacement(
-            context, FadeRoute(page: HomeView(title: "bireysel takip")));
-        return true;
-      }
-      if (_tcno == '11111111111' && _password == 'password') {
-        _userType = "admin";
-        Navigator.pushReplacement(context, FadeRoute(page: AdminView()));
-        return true;
-      }
-      if (_tcno == '22222222222' && _password == 'password') {
-        _userType = "doktor";
-        Navigator.pushReplacement(
+      print("0");
+      var users = TempData.users;
+
+      print("1");
+      for (dynamic user in users) {
+        print("3");
+        if (_tcno == user.tc && _password == user.password) {
+          _userModel = user;
+          Navigator.pushReplacement(
             context,
             FadeRoute(
-                page: HomeView(
-              title: "doktor",
-            )));
-        return true;
+              page: HomeView(),
+            ),
+          );
+          return true;
+        }
       }
-      _text = "Geçersiz TC ve şifre girişi";
+      _text = "Geçersiz giriş";
       notifyListeners();
       return false;
     }
+    notifyListeners(); // gereksiz olabilir check et
     return null;
   }
 

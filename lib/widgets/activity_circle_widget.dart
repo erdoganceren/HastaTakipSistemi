@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
+import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:provider/provider.dart';
 import '../utils/utils.dart';
@@ -16,7 +17,8 @@ class ActivityCircle extends StatefulWidget {
   final bool animate;
   final bool dynamicAnimate;
   final String type; //bpm, adım, ml
-  const ActivityCircle(
+  int value;
+  ActivityCircle(
       {Key key,
       @required this.size,
       @required this.imageSize,
@@ -25,7 +27,8 @@ class ActivityCircle extends StatefulWidget {
       this.color,
       this.animate = false,
       this.dynamicAnimate,
-      @required this.type})
+      @required this.type,
+      @required this.value})
       : super(key: key);
 
   @override
@@ -36,7 +39,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
   Timer _timer;
   bool _colorLogic = false;
   int animationSpeedms;
-  int value = 0; //database den değer çekilecek
+  //database den değer çekilecek
   @override
   void initState() {
     super.initState();
@@ -44,8 +47,8 @@ class _ActivityCircleState extends State<ActivityCircle> {
   }
 
   void startTimer() {
-    if (widget.animate && value != 0) {
-      animationSpeedms = (1000 / (value / 60)).round();
+    if (widget.animate && widget.value != 0) {
+      animationSpeedms = (1000 / (widget.value / 60)).round();
 
       Duration oneSec = Duration(milliseconds: animationSpeedms);
       _timer = new Timer.periodic(oneSec, (Timer timer) {
@@ -77,11 +80,11 @@ class _ActivityCircleState extends State<ActivityCircle> {
     return Column(
       children: [
         InkWell(
-          onTap: () =>
-              Provider.of<LoginValidation>(context, listen: false).userType ==
-                      "bireysel takip"
-                  ? showPickerNumber(context)
-                  : null,
+          borderRadius: BorderRadius.circular(widget.size / 2),
+          onTap: () => Provider.of<LoginValidation>(context, listen: false)
+                  .userModel is Patient
+              ? showPickerNumber(context)
+              : null,
           child: Container(
             height: widget.size,
             width: widget.size,
@@ -137,7 +140,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
           height: screenAwareHeight(10, context),
         ),
         Text(
-          "$value\n${widget.type}",
+          "${widget.value}\n${widget.type}",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.w300,
@@ -156,7 +159,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
             NumberPickerColumn(
                 begin: 0,
                 end: 240,
-                initValue: 90,
+                initValue: widget.value,
                 suffix: Text(" bpm", style: TextStyle(color: Colors.black))),
           ]),
           hideHeader: false,
@@ -168,7 +171,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
               ),
           onConfirm: (Picker picker, List value) {
             setState(() {
-              this.value = (value[0] as int);
+              this.widget.value = (value[0] as int);
             });
             restartTimer();
           }).showDialog(context);
@@ -178,7 +181,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
             NumberPickerColumn(
               begin: 0,
               end: 10,
-              initValue: 1,
+              initValue: (widget.value / 1000).floor(),
               suffix: Text(
                 " L",
                 style: TextStyle(
@@ -189,7 +192,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
             NumberPickerColumn(
               begin: 0,
               end: 999,
-              initValue: 500,
+              initValue: (widget.value % 1000),
               jump: 100,
               suffix: Text(
                 " ml",
@@ -208,7 +211,8 @@ class _ActivityCircleState extends State<ActivityCircle> {
               ),
           onConfirm: (Picker picker, List value) {
             setState(() {
-              this.value = (value[0] as int) * 1000 + (value[1] as int) * 100;
+              this.widget.value =
+                  (value[0] as int) * 1000 + (value[1] as int) * 100;
             });
           }).showDialog(context);
     } else {
@@ -217,12 +221,12 @@ class _ActivityCircleState extends State<ActivityCircle> {
             NumberPickerColumn(
               begin: 0,
               end: 100,
-              initValue: 1,
+              initValue: (widget.value / 1000).floor(),
             ),
             NumberPickerColumn(
               begin: 0,
               end: 999,
-              initValue: 500,
+              initValue: widget.value % 1000,
             ),
           ]),
           hideHeader: false,
@@ -234,7 +238,7 @@ class _ActivityCircleState extends State<ActivityCircle> {
               ),
           onConfirm: (Picker picker, List value) {
             setState(() {
-              this.value = (value[0] as int) * 1000 + (value[1] as int);
+              this.widget.value = (value[0] as int) * 1000 + (value[1] as int);
             });
           }).showDialog(context);
     }

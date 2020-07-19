@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/adminProcesses/admin_processes.dart';
-import 'package:myf2app/views/admin_view/widgets/snackbar_widget.dart';
+import 'package:myf2app/views/home_view/admin_view/widgets/snackbar_widget.dart';
 import 'package:provider/provider.dart';
-
 import 'candidate_member_card_widget.dart';
-import 'card_color_widget.dart';
 import 'dismissable_background_widget.dart';
-import 'title_icon_widget.dart';
 
 class DismissableCard extends StatelessWidget {
   final model;

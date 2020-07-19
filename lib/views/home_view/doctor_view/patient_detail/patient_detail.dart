@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/base_view.dart';
 import 'package:myf2app/views/home_view/patient_view/widgets/carousel_medicinelist_widget.dart';
@@ -9,10 +10,9 @@ import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/header_back_button_widget.dart';
 
 class PatientDetail extends StatelessWidget {
-  final String name;
-  final String imgUrl;
+  final Patient model;
 
-  const PatientDetail({Key key, this.name, this.imgUrl}) : super(key: key);
+  const PatientDetail({Key key, this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +28,17 @@ class PatientDetail extends StatelessWidget {
               right: 0,
               child: Column(
                 children: [
-                  patientCard(context: context, imgUrl: imgUrl, name: name),
-                  patientActivity,
+                  patientCard(context: context, model: model),
+                  patientActivity(model: model),
                   Divider(
                     height: 10,
                     indent: 25,
                     endIndent: 25,
                   ),
-                  patientViewText,
-                  CarouselMedicineList(),
+                  takeMedicineText,
+                  CarouselMedicineList(
+                    model: model,
+                  ),
                 ],
               )),
         ],

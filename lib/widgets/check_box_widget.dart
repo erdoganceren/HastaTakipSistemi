@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
+import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/ui_helper.dart';
@@ -21,7 +22,7 @@ class _CheckBoxState extends State<CheckBox> {
     var userInformation = Provider.of<LoginValidation>(context, listen: false);
     return InkWell(
       onTap: () {
-        userInformation.userType == "bireysel takip"
+        userInformation.userModel is Patient
             ? setState(() {
                 isSelected = !isSelected;
               })

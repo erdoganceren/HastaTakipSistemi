@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/views/home_view/doctor_view/patient_detail/patient_detail.dart';
 import 'package:myf2app/views/ui_helper.dart';
 
 class DoctorsPatientCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
+  final Patient model;
 
-  const DoctorsPatientCard({Key key, this.imageUrl, this.name})
-      : super(key: key);
+  const DoctorsPatientCard({Key key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,20 +17,19 @@ class DoctorsPatientCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => PatientDetail(
-                  imgUrl: imageUrl,
-                  name: name,
+                  model: model,
                 ),
               ));
         },
         contentPadding: EdgeInsets.all(4),
         leading: CircleAvatar(
-          backgroundImage: NetworkImage(imageUrl),
+          backgroundImage: NetworkImage(model.imgUrl),
           radius: 30,
         ),
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            name,
+            "${model.name} ${model.lastname}",
             textAlign: TextAlign.center,
             style: themeData.textTheme.display4.copyWith(
               color: Colors.black.withOpacity(0.6),
