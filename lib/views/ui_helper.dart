@@ -29,6 +29,8 @@ class UIHelper {
   static const String doctorText = "Doktor";
   static const String patientText = "Bireysel\nTakip";
   static const String patientRelativeText = "Yakın\nTakibi";
+  static const String searchBarHintText = "Hastanızı bulun";
+  static const String searchBarCancelText = "Vazgeç";
 
   //COLOR
   static const Color colorPrimary = Color(0xff00a8ff);
@@ -37,6 +39,10 @@ class UIHelper {
   static const Color textFieldCursorColor = Colors.black;
   // loginHeader
   static const Color loginHeaderBackgroundColor = Colors.white;
+  // searchbar
+  static const Color searchBarCancelForegroundColor = Colors.red;
+  static const Color searchBarCusorColor = Colors.black;
+  static const Color searchBarBackgroundColor = Color(0xffdcf6f8);
 
   //ICON
   //passwordField

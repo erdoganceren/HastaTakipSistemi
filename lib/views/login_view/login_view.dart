@@ -6,6 +6,7 @@ import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/header_widget.dart';
+import '../base_view.dart';
 import 'widgets/create_account_widget.dart';
 import 'widgets/password_fied_widget.dart';
 import '../../widgets/submit_button_widget.dart';
@@ -15,40 +16,35 @@ class LoginView extends StatelessWidget {
   LoginValidation loginValidation = new LoginValidation();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Form(
-          key: loginValidation.formKey,
-          child: SingleChildScrollView(
-            reverse: true,
-            child: Column(
-              children: [
-                header(context),
-                body(context),
-              ],
-            ),
+    return BaseView(
+      companyTitle: true,
+      footerTitle: true,
+      positionedTop: screenAwareHeight(220, context),
+      child: Form(
+        key: loginValidation.formKey,
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Column(
+            children: [
+              body(context),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget header(context) => Container(
-      width: double.infinity,
-      height: screenAwareHeight(220, context),
-      child: Header());
   Widget body(context) => Container(
         width: double.infinity,
         height: screenAwareHeight(447, context),
         child: Column(
           children: [
-            Spacer(flex: 2),
+            Spacer(flex: 4),
             tcTextField,
             passwordTextField,
             loginSubmitButton(context),
             createAccountButton(context),
             Spacer(flex: 2),
-            footerLogin(context),
           ],
         ),
       );
@@ -68,21 +64,16 @@ class LoginView extends StatelessWidget {
       );
   Widget loginSubmitButton(context) => Expanded(
         flex: 2,
-        child: SubmitButton(
-          text: UIHelper.loginSubmitButtonText,
-          onTap: () => Provider.of<LoginValidation>(context, listen: false)
-              .loginValidate(context),
+        child: Center(
+          child: SubmitButton(
+            text: UIHelper.loginSubmitButtonText,
+            onTap: () => Provider.of<LoginValidation>(context, listen: false)
+                .loginValidate(context),
+          ),
         ),
       );
   Widget createAccountButton(context) => Expanded(
         flex: 1,
         child: createAccount(context),
-      );
-  Widget footerLogin(context) => Expanded(
-        flex: 1,
-        child: Container(
-          height: screenAwareHeight(169, context),
-          child: footer,
-        ),
       );
 }

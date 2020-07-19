@@ -28,8 +28,6 @@ class CandidateMemberCard extends StatelessWidget {
             ),
           ],
         ),
-        trailing:
-            Icon(Icons.arrow_forward_ios, color: Colors.white.withOpacity(0.6)),
       ),
     );
   }

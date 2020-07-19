@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData get themeData => ThemeData.light().copyWith(
-      scaffoldBackgroundColor: Color(0xfff5f6fa),
+      scaffoldBackgroundColor: Color(0xfff1f2f6),
       textTheme: TextTheme(
         display1: TextStyle(color: Colors.black),
         display2: TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/views/admin_view/admin_view.dart';
+import 'package:myf2app/views/home_view/doctor_view/doctor_view.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/widgets/fade_route_widget.dart';
@@ -7,6 +8,7 @@ import 'package:myf2app/widgets/fade_route_widget.dart';
 class LoginValidation with ChangeNotifier {
   String _tcno;
   String _password;
+  String _userType;
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   bool _hiddenPassword = true;
   Icon _visibilityIcon = UIHelper.visibilityOff;
@@ -21,6 +23,7 @@ class LoginValidation with ChangeNotifier {
 
   get tcno => _tcno;
   get password => _password;
+  get userType => _userType;
   get formKey => _formKey;
   get hiddenPassword => _hiddenPassword;
   get text => _text;
@@ -41,11 +44,24 @@ class LoginValidation with ChangeNotifier {
     // service ile tcler şifreler getirelecek
     if (formKey.currentState.validate()) {
       if (_tcno == '00000000000' && _password == 'password') {
-        Navigator.pushReplacement(context, FadeRoute(page: HomeView()));
+        _userType = "bireysel takip";
+        Navigator.pushReplacement(
+            context, FadeRoute(page: HomeView(title: "bireysel takip")));
         return true;
       }
       if (_tcno == '11111111111' && _password == 'password') {
+        _userType = "admin";
         Navigator.pushReplacement(context, FadeRoute(page: AdminView()));
+        return true;
+      }
+      if (_tcno == '22222222222' && _password == 'password') {
+        _userType = "doktor";
+        Navigator.pushReplacement(
+            context,
+            FadeRoute(
+                page: HomeView(
+              title: "doktor",
+            )));
         return true;
       }
       _text = "Geçersiz TC ve şifre girişi";
