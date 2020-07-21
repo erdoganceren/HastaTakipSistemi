@@ -25,6 +25,7 @@ class _CheckBoxState extends State<CheckBox> {
         userInformation.userModel is Patient
             ? setState(() {
                 isSelected = !isSelected;
+                
               })
             : null;
       },

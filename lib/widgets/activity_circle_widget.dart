@@ -86,8 +86,8 @@ class _ActivityCircleState extends State<ActivityCircle> {
               ? showPickerNumber(context)
               : null,
           child: Container(
-            height: widget.size,
-            width: widget.size,
+            height: screenAwareHeight(widget.size, context),
+            width: screenAwareHeight(widget.size, context),
             child: Stack(children: [
               Align(
                 alignment: Alignment(0, 0),
@@ -140,7 +140,16 @@ class _ActivityCircleState extends State<ActivityCircle> {
           height: screenAwareHeight(10, context),
         ),
         Text(
-          "${widget.value}\n${widget.type}",
+          "${widget.value}",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+            fontSize: screenAwareHeight(widget.textSize, context),
+          ),
+        ),
+        Text(
+          "${widget.type}",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.w300,
@@ -172,49 +181,14 @@ class _ActivityCircleState extends State<ActivityCircle> {
           onConfirm: (Picker picker, List value) {
             setState(() {
               this.widget.value = (value[0] as int);
+              // database aktarılcak value
             });
             restartTimer();
           }).showDialog(context);
     } else if (widget.type == "ml") {
-      new Picker(
-          adapter: NumberPickerAdapter(data: [
-            NumberPickerColumn(
-              begin: 0,
-              end: 10,
-              initValue: (widget.value / 1000).floor(),
-              suffix: Text(
-                " L",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            NumberPickerColumn(
-              begin: 0,
-              end: 999,
-              initValue: (widget.value % 1000),
-              jump: 100,
-              suffix: Text(
-                " ml",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ]),
-          hideHeader: false,
-          cancelText: "Vazgeç",
-          confirmText: "Onayla",
-          builderHeader: (context) => Container(
-                child: Text("İçilen Su Miktarı",
-                    style: themeData.textTheme.display1),
-              ),
-          onConfirm: (Picker picker, List value) {
-            setState(() {
-              this.widget.value =
-                  (value[0] as int) * 1000 + (value[1] as int) * 100;
-            });
-          }).showDialog(context);
+      setState(() {
+        this.widget.value += 250;
+      });
     } else {
       new Picker(
           adapter: NumberPickerAdapter(data: [

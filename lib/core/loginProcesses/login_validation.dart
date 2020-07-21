@@ -4,7 +4,7 @@ import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/utils/temp_datas.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
-import 'package:myf2app/widgets/fade_route_widget.dart';
+import 'package:myf2app/core/navigationAnimation/fade_route_widget.dart';
 
 class LoginValidation with ChangeNotifier {
   String _tcno;
@@ -46,7 +46,6 @@ class LoginValidation with ChangeNotifier {
     if (formKey.currentState.validate()) {
       print("0");
       var users = TempData.users;
-
       print("1");
       for (dynamic user in users) {
         print("3");
@@ -58,6 +57,7 @@ class LoginValidation with ChangeNotifier {
               page: HomeView(),
             ),
           );
+          _text = "";
           return true;
         }
       }

@@ -31,7 +31,7 @@ class UIHelper {
   static const String patientRelativeText = "Yakın\nTakibi";
   static const String searchBarHintText = "Hastanızı bulun";
   static const String searchBarCancelText = "Vazgeç";
-
+  static const String medicineListText = "Kullanılacak İlaçlar";
   //COLOR
   static const Color colorPrimary = Color(0xff00a8ff);
   static const Color colorSecondary = Color(0xff4cd137);

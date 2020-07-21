@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/views/ui_helper.dart';
 
 Widget headerBackButton({BuildContext context, Color color}) => Positioned(
     top: 0,
@@ -17,4 +16,4 @@ Widget headerBackButton({BuildContext context, Color color}) => Positioned(
           color: Colors.white.withOpacity(0.6),
         ),
       ),
-    ));
+    ),);

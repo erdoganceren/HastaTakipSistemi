@@ -60,15 +60,17 @@ class MedicineCard extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: medicine.countOfDay,
                   itemBuilder: (context, index) => Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenAwareWidth(15, context)),
                     alignment: Alignment.center,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(Icons.timer, color: Colors.white),
                         Text(
-                          "${24 / medicine.countOfDay * (index + 1)}",
-                          style: TextStyle(fontSize: 16),
+                          "${(24 / medicine.countOfDay * (index + 1)).toStringAsFixed(2)}",
+                          style: TextStyle(
+                              fontSize: screenAwareHeight(16, context)),
                         ),
                       ],
                     ),
@@ -76,11 +78,11 @@ class MedicineCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "Günde ${medicine.countOfDay} kez, 1 tablet içilecek.",
+                "Günde ${medicine.countOfDay} kere kullanılmalıdır.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: screenAwareHeight(16, context),
                     fontWeight: FontWeight.w300),
               ),
               SizedBox(
@@ -93,19 +95,19 @@ class MedicineCard extends StatelessWidget {
                   Text(
                     "Detay",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: screenAwareHeight(16, context),
                       fontWeight: FontWeight.w300,
                     ),
                   ),
                   Icon(
-                    Icons.keyboard_arrow_right,
+                    Icons.arrow_right,
                     color: Colors.white,
-                    size: 20,
+                    size: screenAwareHeight(20, context),
                   )
                 ],
               ),
               SizedBox(
-                height: 6,
+                height: screenAwareHeight(6, context),
               )
             ],
           ),

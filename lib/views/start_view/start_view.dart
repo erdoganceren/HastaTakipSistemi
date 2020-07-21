@@ -5,7 +5,7 @@ import 'package:myf2app/views/base_view.dart';
 import 'package:myf2app/views/login_view/login_view.dart';
 import 'package:myf2app/views/singup_view/signup_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
-import 'package:myf2app/widgets/fade_route_widget.dart';
+import 'package:myf2app/core/navigationAnimation/fade_route_widget.dart';
 import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:myf2app/widgets/header_widget.dart';
 import 'package:myf2app/widgets/submit_button_widget.dart';

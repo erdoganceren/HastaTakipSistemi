@@ -12,7 +12,7 @@ class PatientRelativeView extends StatelessWidget {
   const PatientRelativeView({Key key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var patient = Patient.searchPatient(model.patientTc);
+    Patient patient = Patient.searchPatient(model.patientTc);
     return Column(
       children: [
         patientCard(context: context, model: patient),

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:myf2app/widgets/header_widget.dart';
-
 import 'login_view/login_view.dart';
-import 'ui_helper.dart';
 
 class BaseView extends StatelessWidget {
   final Widget child;

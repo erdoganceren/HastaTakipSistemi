@@ -1,12 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/models/doctor.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
+import 'package:myf2app/views/ui_helper.dart';
 import 'package:provider/provider.dart';
 
 Widget doctorCard({context, Doctor model}) {
-  print(model.imgUrl);
   return Container(
     height: screenAwareHeight(100, context),
     child: Card(
@@ -15,10 +16,15 @@ Widget doctorCard({context, Doctor model}) {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(model.imgUrl),
-                radius: 40,
-              ),
+              CachedNetworkImage(
+                  imageUrl: model.imgUrl,
+                  imageBuilder: (context, imageProvider) => CircleAvatar(
+                        backgroundImage: imageProvider,
+                        radius: 40,
+                      ),
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.contain),
               SizedBox(
                 width: screenAwareWidth(10, context),
               ),
