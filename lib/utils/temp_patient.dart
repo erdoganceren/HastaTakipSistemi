@@ -9,6 +9,11 @@ class TempPatient {
     tc: "00000000001",
     password: "password",
     medicines: [TempMedicine.m1, TempMedicine.m3, TempMedicine.m5],
+    medicineTimes: {
+      TempMedicine.m1.name: ["12.00", "16.00", "20.00"],
+      TempMedicine.m3.name: ["14.00", "24.00"],
+      TempMedicine.m5.name: ["15.00"],
+    },
     telephoneNo: "5552221144",
     imgUrl:
         "https://fluidideas.s3-eu-west-1.amazonaws.com/barchester/s3fs-public/2017-files/Pete%20Calveley_0.jpg",
@@ -22,7 +27,11 @@ class TempPatient {
     lastname: "Ürkek",
     tc: "00000000002",
     password: "password",
-    medicines: [TempMedicine.m2, TempMedicine.m4],
+    medicines: [TempMedicine.m1, TempMedicine.m5],
+    medicineTimes: {
+      TempMedicine.m1.name: ["20.00"],
+      TempMedicine.m5.name: ["15.00"],
+    },
     telephoneNo: "5552221143",
     imgUrl:
         "https://pbs.twimg.com/profile_images/2197524322/826933_portrait_of_elderly_man_in_cowboy_hat_1_400x400.jpg",
@@ -36,12 +45,12 @@ class TempPatient {
     lastname: "Keskin",
     tc: "00000000003",
     password: "password",
-    medicines: [
-      TempMedicine.m1,
-      TempMedicine.m2,
-      TempMedicine.m3,
-      TempMedicine.m4
-    ],
+    medicines: [TempMedicine.m1, TempMedicine.m3, TempMedicine.m5],
+    medicineTimes: {
+      TempMedicine.m1.name: ["10.00", "14.00", "18.00"],
+      TempMedicine.m3.name: ["12.00", "24.00"],
+      TempMedicine.m5.name: ["15.00"],
+    },
     telephoneNo: "5552221142",
     imgUrl:
         "https://cdn.thedailymash.co.uk/wp-content/uploads/20200407111048/old-woman-smiling-667x375.jpg",
@@ -55,7 +64,11 @@ class TempPatient {
     lastname: "Gündoğdu",
     tc: "00000000004",
     password: "password",
-    medicines: [TempMedicine.m4],
+    medicines: [TempMedicine.m2, TempMedicine.m4],
+    medicineTimes: {
+      TempMedicine.m2.name: ["12.00", "16.00", "20.00"],
+      TempMedicine.m4.name: ["11.00", "20.00"],
+    },
     telephoneNo: "5552221141",
     imgUrl:
         "https://elderlywellnesscompanion.com/wp-content/uploads/2020/05/elderly-people-profile-runu.jpg",
@@ -69,7 +82,12 @@ class TempPatient {
     lastname: "Yılmaz",
     tc: "00000000005",
     password: "password",
-    medicines: [TempMedicine.m3, TempMedicine.m4],
+    medicines: [TempMedicine.m2, TempMedicine.m3, TempMedicine.m4],
+    medicineTimes: {
+      TempMedicine.m2.name: ["08.00", "20.00"],
+      TempMedicine.m3.name: ["12.00", "24.00"],
+      TempMedicine.m4.name: ["16.00"],
+    },
     telephoneNo: "5552221140",
     imgUrl:
         "https://fluidideas.s3-eu-west-1.amazonaws.com/barchester/s3fs-public/2017-files/Pete%20Calveley_0.jpg",

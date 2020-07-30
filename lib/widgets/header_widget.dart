@@ -95,7 +95,7 @@ class _HeaderState extends State<Header> {
                     style: themeData.textTheme.display2.copyWith(
                         color: Colors.white.withOpacity(0.8),
                         fontWeight: FontWeight.w300,
-                        fontSize: 28),
+                        fontSize: screenAwareHeight(28, context)),
                   )
                 : SizedBox(height: 1),
           ),

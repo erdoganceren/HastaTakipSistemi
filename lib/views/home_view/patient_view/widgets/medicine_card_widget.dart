@@ -5,8 +5,10 @@ import 'package:myf2app/views/ui_helper.dart';
 import '../../../../utils/utils.dart';
 
 class MedicineCard extends StatelessWidget {
+  final List<String> medicineTimes;
   final Medicine medicine;
-  const MedicineCard({Key key, @required this.medicine}) : super(key: key);
+  const MedicineCard({Key key, @required this.medicineTimes, this.medicine})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -16,6 +18,7 @@ class MedicineCard extends StatelessWidget {
             MaterialPageRoute(
                 builder: (context) => MedicineView(
                       medicine: medicine,
+                      medicineTimes: medicineTimes,
                     )));
       },
       child: Card(
@@ -58,7 +61,7 @@ class MedicineCard extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: medicine.countOfDay,
+                  itemCount: medicineTimes.length,
                   itemBuilder: (context, index) => Container(
                     padding: EdgeInsets.symmetric(
                         horizontal: screenAwareWidth(15, context)),
@@ -68,7 +71,7 @@ class MedicineCard extends StatelessWidget {
                       children: [
                         Icon(Icons.timer, color: Colors.white),
                         Text(
-                          "${(24 / medicine.countOfDay * (index + 1)).toStringAsFixed(2)}",
+                          "${medicineTimes[index]}",
                           style: TextStyle(
                               fontSize: screenAwareHeight(16, context)),
                         ),
@@ -78,7 +81,7 @@ class MedicineCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "Günde ${medicine.countOfDay} kere kullanılmalıdır.",
+                "Günde ${medicineTimes.length} kere kullanılmalıdır.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,

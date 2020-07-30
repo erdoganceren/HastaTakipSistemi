@@ -11,18 +11,21 @@ class BaseView extends StatelessWidget {
   final bool companyTitle;
   final bool footerTitle;
   final bool exitButton;
+  final ScrollPhysics scrollPhysics;
   const BaseView(
       {Key key,
       this.child,
       this.positionedTop,
       this.companyTitle = false,
       this.footerTitle = false,
-      this.exitButton = false})
+      this.exitButton = false,
+      this.scrollPhysics = const ClampingScrollPhysics()})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: scrollPhysics,
         reverse: true,
         child: Container(
           width: screenAwareWidth(375, context),
@@ -45,7 +48,8 @@ class BaseView extends StatelessWidget {
                         onPressed: () {
                           LocalNotification notif =
                               LocalNotification.getInstance();
-                          notif.deleteAllNotificationPlan();
+                          notif
+                              .deleteAllNotificationPlan(); // çıkış olursa tüm kayıtlı bildirimler silinir.
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (_) => LoginView()));
                         },
@@ -67,7 +71,7 @@ class BaseView extends StatelessWidget {
                   right: 10,
                   left: 10,
                   child: footerTitle
-                      ? footer
+                      ? footer(context)
                       : SizedBox(
                           height: 0,
                         ))

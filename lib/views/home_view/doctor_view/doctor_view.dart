@@ -45,7 +45,7 @@ class DoctorView extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(child: patientListWidget(model:model)),
+                Expanded(child: PatientList(doctor: model)),
               ],
             ),
           ),

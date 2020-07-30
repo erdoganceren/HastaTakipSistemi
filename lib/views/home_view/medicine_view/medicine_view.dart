@@ -14,7 +14,9 @@ import '../../../widgets/header_back_button_widget.dart';
 
 class MedicineView extends StatelessWidget {
   final Medicine medicine;
-  const MedicineView({Key key, this.medicine}) : super(key: key);
+  final List<String> medicineTimes;
+  const MedicineView({Key key, this.medicine, this.medicineTimes})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +53,7 @@ class MedicineView extends StatelessWidget {
                       leading:
                           Icon(Icons.add_alert, color: UIHelper.colorPrimary),
                       title: Text(
-                          "Bu ilaç günde ${medicine.countOfDay} kere kullanılmalıdır.",
+                          "Bu ilaç günde ${medicineTimes.length} kere kullanılmalıdır.",
                           style: themeData.textTheme.display1.copyWith(
                               fontWeight: FontWeight.w300, fontSize: 16)),
                     ),
@@ -62,10 +64,10 @@ class MedicineView extends StatelessWidget {
                     Expanded(
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: medicine.countOfDay,
+                        itemCount: medicineTimes.length,
                         itemBuilder: (context, index) => CheckBox(
-                          time: medicine.medicineTimes[index],
-                          medicineName: medicine.name,
+                          time: medicineTimes[index],
+                          medicine: medicine,
                         ),
                       ),
                     ),

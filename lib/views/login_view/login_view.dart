@@ -15,7 +15,6 @@ import 'widgets/text_field_widget.dart';
 
 class LoginView extends StatelessWidget {
   LoginValidation loginValidation = new LoginValidation();
-
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -24,13 +23,10 @@ class LoginView extends StatelessWidget {
       positionedTop: screenAwareHeight(220, context),
       child: Form(
         key: loginValidation.formKey,
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Column(
-            children: [
-              body(context),
-            ],
-          ),
+        child: Column(
+          children: [
+            body(context),
+          ],
         ),
       ),
     );
@@ -38,15 +34,15 @@ class LoginView extends StatelessWidget {
 
   Widget body(context) => Container(
         width: double.infinity,
-        height: screenAwareHeight(447, context),
+        height: screenAwareHeight(455, context),
         child: Column(
           children: [
-            Spacer(flex: 4),
+            Spacer(flex: 2),
             tcTextField,
             passwordTextField,
             loginSubmitButton(context),
             createAccountButton(context),
-            Spacer(flex: 2),
+            Spacer(flex: 1),
           ],
         ),
       );

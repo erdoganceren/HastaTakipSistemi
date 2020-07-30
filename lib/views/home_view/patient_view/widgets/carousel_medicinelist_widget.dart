@@ -21,8 +21,10 @@ class CarouselMedicineList extends StatelessWidget {
           autoPlay: true,
         ),
         itemCount: model.medicines.length,
-        itemBuilder: (context, int index) =>
-            MedicineCard(medicine: model.medicines[index]),
+        itemBuilder: (context, int index) => MedicineCard(
+          medicineTimes: model.medicineTimes[model.medicines[index].name],
+          medicine: model.medicines[index],
+        ),
       ),
     );
   }

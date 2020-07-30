@@ -11,6 +11,7 @@ class Patient {
   String _telephoneNo;
   String _imgUrl;
   String _doctorTc;
+  Map<String, List<String>> _medicineTimes;
   List<Medicine> _medicines;
   int _water;
   int _bpm;
@@ -25,6 +26,7 @@ class Patient {
       String imgUrl,
       @required String doctorTc,
       List<Medicine> medicines,
+      Map<String, List<String>> medicineTimes,
       int water,
       int bpm,
       int step}) {
@@ -36,6 +38,7 @@ class Patient {
     _imgUrl = imgUrl;
     _doctorTc = doctorTc;
     _medicines = medicines;
+    _medicineTimes = medicineTimes;
     _water = water;
     _bpm = bpm;
     _step = step;
@@ -49,6 +52,7 @@ class Patient {
   String get imgUrl => _imgUrl;
   String get doctor => _doctorTc;
   List<Medicine> get medicines => _medicines;
+  Map<String, List<String>> get medicineTimes => _medicineTimes;
   int get water => _water;
   int get bpm => _bpm;
   int get step => _step;
@@ -56,6 +60,16 @@ class Patient {
   set water(int value) => _water = value;
   set bpm(int value) => _bpm = value;
   set step(int value) => _step = value;
+
+  set medicineTimes(Map<String, List<String>> value) => _medicineTimes = value;
+  void setMedicineTime(Medicine medicine, String oldTime, String newTime) {
+    List<String> times = _medicineTimes[medicine.name];
+    print("**$times");
+    int oldTimeIndex = times.indexOf(oldTime);
+    times.replaceRange(oldTimeIndex, oldTimeIndex + 1, [newTime]);
+    _medicineTimes.update(medicine.name, (value) => times);
+    print(_medicineTimes[medicine]);
+  }
 
   static Patient searchPatient(String tc) {
     for (Patient p in patientList) {

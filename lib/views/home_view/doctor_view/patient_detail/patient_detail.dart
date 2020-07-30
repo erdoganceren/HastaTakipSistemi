@@ -23,7 +23,7 @@ class PatientDetail extends StatelessWidget {
           headerBackButton(
               context: context, color: UIHelper.colorPrimary.withOpacity(0.6)),
           Positioned(
-              top: 90,
+              top: screenAwareHeight(90, context),
               left: 0,
               right: 0,
               child: Column(

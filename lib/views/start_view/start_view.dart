@@ -14,9 +14,10 @@ class StartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView(
+      scrollPhysics: NeverScrollableScrollPhysics(),
       companyTitle: true,
       footerTitle: true,
-      positionedTop: 220,
+      positionedTop: screenAwareHeight(220, context),
       child: Column(
         children: [
           title,
@@ -29,7 +30,7 @@ class StartView extends StatelessWidget {
   }
 
   Widget get title => Expanded(
-        flex: 20,
+        flex: 16,
         child: Text(
           UIHelper.startHeaderText,
           style: themeData.textTheme.headline,

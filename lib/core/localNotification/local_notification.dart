@@ -1,16 +1,16 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotification {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
 
   LocalNotification() {
     var initializationSettingsAndroid =
-        new AndroidInitializationSettings('app_icon.png');
+        new AndroidInitializationSettings('app_icon');
     var initializationSettingsIOS = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(
         initializationSettingsAndroid, initializationSettingsIOS);
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    _flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
   static LocalNotification _instance;
 
@@ -22,15 +22,25 @@ class LocalNotification {
     return _instance;
   }
 
-  sendNow(String title, String body) async {
+  setOnSelectNotification(Function f) async {
+    var initializationSettingsAndroid =
+        new AndroidInitializationSettings('app_icon');
+    var initializationSettingsIOS = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(
+        initializationSettingsAndroid, initializationSettingsIOS);
+    await _flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: (String payload) => f(payload));
+  }
+
+  sendNow(String title, String body, String payload) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'your channel id', 'your channel name', 'your channel description',
         importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-    await flutterLocalNotificationsPlugin.show(
-        0, title, body, platformChannelSpecifics);
+    await _flutterLocalNotificationsPlugin
+        .show(0, title, body, platformChannelSpecifics, payload: payload);
   }
 
   Future setDailyNotification(
@@ -39,26 +49,34 @@ class LocalNotification {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'repeatDailyAtTime channel id',
         'repeatDailyAtTime channel name',
-        'repeatDailyAtTime description');
+        'repeatDailyAtTime description',
+        importance: Importance.Max,
+        priority: Priority.High,
+        ticker: 'ticker');
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.showDailyAtTime(
-        id, title, body, time, platformChannelSpecifics);
+    await _flutterLocalNotificationsPlugin.showDailyAtTime(
+      id,
+      title,
+      body,
+      time,
+      platformChannelSpecifics,
+    );
   }
 
   void deleteNotificationPlan(int id) {
-    flutterLocalNotificationsPlugin.cancel(id);
+    _flutterLocalNotificationsPlugin.cancel(id);
   }
 
   void deleteAllNotificationPlan() {
-    flutterLocalNotificationsPlugin.cancelAll();
+    _flutterLocalNotificationsPlugin.cancelAll();
   }
 
   Future<List<PendingNotificationRequest>> showNotificationPlans() async {
     var pendingNotificationRequests =
-        await flutterLocalNotificationsPlugin.pendingNotificationRequests();
+        await _flutterLocalNotificationsPlugin.pendingNotificationRequests();
     return pendingNotificationRequests;
   }
 }

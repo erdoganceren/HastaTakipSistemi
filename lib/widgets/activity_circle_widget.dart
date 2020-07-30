@@ -186,9 +186,27 @@ class _ActivityCircleState extends State<ActivityCircle> {
             restartTimer();
           }).showDialog(context);
     } else if (widget.type == "ml") {
-      setState(() {
-        this.widget.value += 250;
-      });
+      Picker(
+          adapter: NumberPickerAdapter(data: [
+            NumberPickerColumn(
+              begin: 0,
+              end: 999,
+              initValue: (widget.value / 200).floor(),
+              suffix: Text(" bardak", style: TextStyle(color: Colors.black)),
+            ),
+          ]),
+          hideHeader: false,
+          cancelText: "Vazgeç",
+          confirmText: "Onayla",
+          builderHeader: (context) => Container(
+                child: Text("İçilen Su Miktarı",
+                    style: themeData.textTheme.display1),
+              ),
+          onConfirm: (Picker picker, List value) {
+            setState(() {
+              this.widget.value = value[0] * 200;
+            });
+          }).showDialog(context);
     } else {
       new Picker(
           adapter: NumberPickerAdapter(data: [

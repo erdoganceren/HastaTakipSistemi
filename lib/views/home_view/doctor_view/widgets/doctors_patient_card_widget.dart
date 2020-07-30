@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myf2app/core/doctorProcesses/doctor_patient_card_process.dart';
 import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
+import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/home_view/doctor_view/patient_detail/patient_detail.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class DoctorsPatientCard extends StatelessWidget {
             imageUrl: model.imgUrl,
             imageBuilder: (context, imageProvider) => CircleAvatar(
                   backgroundImage: imageProvider,
-                  radius: 30,
+                  radius: screenAwareHeight(30, context),
                 ),
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),

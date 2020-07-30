@@ -8,35 +8,34 @@ import 'package:myf2app/views/ui_helper.dart';
 import 'package:provider/provider.dart';
 
 Widget doctorCard({context, Doctor model}) {
-  return Container(
-    height: screenAwareHeight(100, context),
-    child: Card(
-        color: Colors.purple.withOpacity(0.2),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              CachedNetworkImage(
-                  imageUrl: model.imgUrl,
-                  imageBuilder: (context, imageProvider) => CircleAvatar(
-                        backgroundImage: imageProvider,
-                        radius: 40,
-                      ),
-                  placeholder: (context, url) => CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  fit: BoxFit.contain),
-              SizedBox(
-                width: screenAwareWidth(10, context),
+  return Card(
+      color: Colors.purple.withOpacity(0.2),
+      child: Padding(
+        padding: EdgeInsets.all(screenAwareHeight(8.0, context)),
+        child: Row(
+          children: [
+            CachedNetworkImage(
+                imageUrl: model.imgUrl,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                      backgroundImage: imageProvider,
+                      radius: screenAwareHeight(40, context),
+                    ),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                height: screenAwareHeight(100, context),
+                width: screenAwareHeight(100, context),
+                fit: BoxFit.contain),
+            SizedBox(
+              width: screenAwareWidth(10, context),
+            ),
+            Text(
+              "${model.name}\n${model.lastname}",
+              textAlign: TextAlign.center,
+              style: themeData.textTheme.display3.copyWith(
+                color: Colors.white.withOpacity(0.8),
               ),
-              Text(
-                "${model.name}\n${model.lastname}",
-                textAlign: TextAlign.center,
-                style: themeData.textTheme.display3.copyWith(
-                  color: Colors.white.withOpacity(0.8),
-                ),
-              ),
-            ],
-          ),
-        )),
-  );
+            ),
+          ],
+        ),
+      ));
 }

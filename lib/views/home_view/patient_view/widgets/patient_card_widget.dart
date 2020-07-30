@@ -5,6 +5,7 @@ import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/models/doctor.dart';
 import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
+import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
@@ -16,7 +17,7 @@ Widget patientCard({
     Card(
       color: Colors.purple.withOpacity(0.2),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(screenAwareHeight(8.0, context)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -26,12 +27,12 @@ Widget patientCard({
                     imageUrl: model.imgUrl,
                     imageBuilder: (context, imageProvider) => CircleAvatar(
                           backgroundImage: imageProvider,
-                          radius: 40,
+                          radius: screenAwareHeight(40, context),
                         ),
                     placeholder: (context, url) => CircularProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
-                    height: 100,
-                    width: 100,
+                    height: screenAwareHeight(100, context),
+                    width: screenAwareHeight(100, context),
                     fit: BoxFit.contain),
                 SizedBox(
                   width: 10,
@@ -67,13 +68,15 @@ Widget _cardRightSide({context, model}) {
         title: "Doktorum",
         telNo: Doctor.searchDoctor(model.doctor).telephoneNo);
   } else if (loginType is Doctor) {
-    return _cardInformation(title: "Hastam", telNo: model.telephoneNo);
+    return _cardInformation(
+        title: "Hastam", telNo: model.telephoneNo, context: context);
   } else {
-    return _cardInformation(title: "Yakınım", telNo: model.telephoneNo);
+    return _cardInformation(
+        title: "Yakınım", telNo: model.telephoneNo, context: context);
   }
 }
 
-Widget _cardInformation({String title, String telNo}) => Column(
+Widget _cardInformation({String title, String telNo, context}) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
@@ -85,12 +88,18 @@ Widget _cardInformation({String title, String telNo}) => Column(
         Row(
           children: [
             IconButton(
-                icon: Icon(Icons.call, color: Colors.red),
+                icon: Icon(
+                  Icons.call,
+                  color: Colors.red,
+                ),
                 onPressed: () {
                   _launchCaller("tel:$telNo");
                 }),
             IconButton(
-                icon: Icon(Icons.mail, color: Colors.yellow),
+                icon: Icon(
+                  Icons.mail,
+                  color: Colors.yellow,
+                ),
                 onPressed: () {
                   _launchCaller("sms:$telNo");
                 }),
