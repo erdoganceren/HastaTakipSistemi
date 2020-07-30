@@ -18,7 +18,6 @@ class SignupView extends StatelessWidget {
     return BaseView(
       companyTitle: true,
       footerTitle: true,
-      scrollPhysics: ClampingScrollPhysics(),
       positionedTop: screenAwareHeight(220, context),
       child: Container(
         alignment: Alignment.center,
