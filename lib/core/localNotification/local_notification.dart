@@ -5,7 +5,7 @@ class LocalNotification {
 
   LocalNotification() {
     var initializationSettingsAndroid =
-        new AndroidInitializationSettings('app_icon');
+        new AndroidInitializationSettings('app_icon.png');
     var initializationSettingsIOS = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(
         initializationSettingsAndroid, initializationSettingsIOS);
