@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:myf2app/widgets/header_widget.dart';
@@ -41,13 +42,18 @@ class BaseView extends StatelessWidget {
                       top: 30,
                       right: 4,
                       child: IconButton(
-                        onPressed: () => Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => LoginView())),
+                        onPressed: () {
+                          LocalNotification notif =
+                              LocalNotification.getInstance();
+                          notif.deleteAllNotificationPlan();
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (_) => LoginView()));
+                        },
                         icon: Icon(Icons.exit_to_app,
                             size: 26, color: Colors.black.withOpacity(0.4)),
                       ),
                     )
-                  : SizedBox(height: 1),
+                  : SizedBox(height: 0),
               Positioned(
                   left: 0,
                   right: 0,

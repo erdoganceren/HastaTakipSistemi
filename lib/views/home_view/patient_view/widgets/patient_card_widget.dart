@@ -67,9 +67,6 @@ Widget _cardRightSide({context, model}) {
         title: "Doktorum",
         telNo: Doctor.searchDoctor(model.doctor).telephoneNo);
   } else if (loginType is Doctor) {
-    String patientTc =
-        Provider.of<DoctorPatientCardProcess>(context, listen: false)
-            .currentPatientTc;
     return _cardInformation(title: "Hastam", telNo: model.telephoneNo);
   } else {
     return _cardInformation(title: "Yakınım", telNo: model.telephoneNo);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/theme/theme.dart';
@@ -8,8 +9,9 @@ import 'package:provider/provider.dart';
 
 class CheckBox extends StatefulWidget {
   final String time;
-
-  const CheckBox({Key key, @required this.time}) : super(key: key);
+  final String medicineName;
+  CheckBox({Key key, @required this.time, @required this.medicineName})
+      : super(key: key);
 
   @override
   _CheckBoxState createState() => _CheckBoxState();
@@ -18,6 +20,12 @@ class CheckBox extends StatefulWidget {
 class _CheckBoxState extends State<CheckBox> {
   bool isSelected = false;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var userInformation = Provider.of<LoginValidation>(context, listen: false);
     return InkWell(
@@ -25,7 +33,6 @@ class _CheckBoxState extends State<CheckBox> {
         userInformation.userModel is Patient
             ? setState(() {
                 isSelected = !isSelected;
-                
               })
             : null;
       },

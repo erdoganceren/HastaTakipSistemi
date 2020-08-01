@@ -64,8 +64,8 @@ class MedicineView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: medicine.countOfDay,
                         itemBuilder: (context, index) => CheckBox(
-                          time: (24 / medicine.countOfDay * (index + 1))
-                              .toStringAsFixed(2),
+                          time: medicine.medicineTimes[index],
+                          medicineName: medicine.name,
                         ),
                       ),
                     ),

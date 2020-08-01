@@ -58,6 +58,7 @@ class LoginValidation with ChangeNotifier {
             ),
           );
           _text = "";
+
           return true;
         }
       }

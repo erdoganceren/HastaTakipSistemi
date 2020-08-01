@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
@@ -14,6 +15,7 @@ import 'widgets/text_field_widget.dart';
 
 class LoginView extends StatelessWidget {
   LoginValidation loginValidation = new LoginValidation();
+
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -66,10 +68,11 @@ class LoginView extends StatelessWidget {
         flex: 2,
         child: Center(
           child: SubmitButton(
-            text: UIHelper.loginSubmitButtonText,
-            onTap: () => Provider.of<LoginValidation>(context, listen: false)
-                .loginValidate(context),
-          ),
+              text: UIHelper.loginSubmitButtonText,
+              onTap: () {
+                Provider.of<LoginValidation>(context, listen: false)
+                    .loginValidate(context);
+              }),
         ),
       );
   Widget createAccountButton(context) => Expanded(
