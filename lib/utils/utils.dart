@@ -4,6 +4,7 @@ const double baseHeight = 667;
 const double baseWidth = 375;
 
 double screenAwareHeight(double size, BuildContext context) {
+  double statusBarHeight = MediaQuery.of(context).padding.top;
   return size * MediaQuery.of(context).size.height / baseHeight;
 }
 

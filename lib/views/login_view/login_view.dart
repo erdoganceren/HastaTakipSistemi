@@ -34,7 +34,7 @@ class LoginView extends StatelessWidget {
 
   Widget body(context) => Container(
         width: double.infinity,
-        height: screenAwareHeight(455, context),
+        height: screenAwareHeight(447, context),
         child: Column(
           children: [
             Spacer(flex: 2),
@@ -42,7 +42,7 @@ class LoginView extends StatelessWidget {
             passwordTextField,
             loginSubmitButton(context),
             createAccountButton(context),
-            Spacer(flex: 1),
+            Spacer(flex: 1,)
           ],
         ),
       );

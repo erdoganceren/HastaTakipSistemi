@@ -42,8 +42,8 @@ class BaseView extends StatelessWidget {
               ),
               exitButton
                   ? Positioned(
-                      top: 30,
-                      right: 4,
+                      top: screenAwareHeight(40,context),
+                      right: screenAwareWidth(4,context),
                       child: IconButton(
                         onPressed: () {
                           LocalNotification notif =
@@ -54,7 +54,7 @@ class BaseView extends StatelessWidget {
                               MaterialPageRoute(builder: (_) => LoginView()));
                         },
                         icon: Icon(Icons.exit_to_app,
-                            size: 26, color: Colors.black.withOpacity(0.4)),
+                            size: 26, color: Colors.white),
                       ),
                     )
                   : SizedBox(height: 0),
