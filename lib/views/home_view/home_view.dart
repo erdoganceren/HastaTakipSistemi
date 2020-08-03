@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView(
         exitButton: true,
-        positionedTop: screenAwareHeight(90, context),
+        positionedTop:  screenAwareWidth(90, context),
         child: _getStartupView(context));
   }
 

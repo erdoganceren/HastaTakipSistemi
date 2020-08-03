@@ -29,21 +29,21 @@ class BaseView extends StatelessWidget {
         reverse: true,
         child: Container(
           width: screenAwareWidth(375, context),
-          height: screenAwareHeight(675, context),
+          height: screenAwareHeight(667, context),
           child: Stack(
             children: [
               Positioned(
                 left: 0,
                 right: 0,
                 child: Container(
-                  height: screenAwareHeight(675, context),
+                  height: screenAwareHeight(667, context),
                   child: Header(companyTitle: companyTitle),
                 ),
               ),
               exitButton
                   ? Positioned(
                       top: screenAwareHeight(40,context),
-                      right: screenAwareWidth(4,context),
+                      right: screenAwareWidth(10,context),
                       child: IconButton(
                         onPressed: () {
                           LocalNotification notif =
@@ -54,7 +54,7 @@ class BaseView extends StatelessWidget {
                               MaterialPageRoute(builder: (_) => LoginView()));
                         },
                         icon: Icon(Icons.exit_to_app,
-                            size: 26, color: Colors.white),
+                            size: screenAwareWidth(26,context), color: Colors.white),
                       ),
                     )
                   : SizedBox(height: 0),
@@ -63,13 +63,13 @@ class BaseView extends StatelessWidget {
                   right: 0,
                   top: positionedTop,
                   child: Container(
-                    height: screenAwareHeight(675 - positionedTop, context),
+                    height: screenAwareHeight(667, context) - positionedTop,
                     child: child,
                   )),
               Positioned(
-                  bottom: 10,
-                  right: 10,
-                  left: 10,
+                  bottom: screenAwareHeight(10,context),
+                  right: screenAwareWidth(10,context),
+                  left: screenAwareWidth(10,context),
                   child: footerTitle
                       ? footer(context)
                       : SizedBox(

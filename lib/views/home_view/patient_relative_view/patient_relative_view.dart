@@ -22,7 +22,7 @@ class PatientRelativeView extends StatelessWidget {
           indent: 25,
           endIndent: 25,
         ),
-        takeMedicineText,
+        takeMedicineText(context),
         CarouselMedicineList(model: patient),
       ],
     );

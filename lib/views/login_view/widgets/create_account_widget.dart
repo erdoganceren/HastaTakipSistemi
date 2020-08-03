@@ -12,5 +12,5 @@ Widget createAccount(BuildContext context) => InkWell(
       child: Text(UIHelper.createAccountText,
           style: themeData.textTheme.display1.copyWith(
               decoration: TextDecoration.underline,
-              fontSize: screenAwareHeight(14, context))),
+              fontSize: screenAwareWidth(14, context))),
     );

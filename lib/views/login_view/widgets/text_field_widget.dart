@@ -26,8 +26,9 @@ class TcTextField extends StatelessWidget {
           keyboardType: textInputType,
           textInputAction: TextInputAction.next,
           cursorColor: UIHelper.textFieldCursorColor,
-          style: themeData.textTheme.display1,
+          style: TextStyle(color:Colors.black,fontSize: screenAwareWidth(14, context)),
           decoration: InputDecoration(
+            contentPadding: new EdgeInsets.symmetric(vertical: screenAwareHeight(14.0,context), horizontal: screenAwareWidth(10.0,context)),
             hintText: hintText,
           ),
           validator:

@@ -52,16 +52,16 @@ class _HeaderState extends State<Header> {
     return Stack(
       children: [
         Positioned(
-          top: -50,
-          right: -25,
+          top: screenAwareWidth(-50, context),
+          right: screenAwareWidth(-25, context),
           child: AnimatedContainer(
             duration: Duration(seconds: 2),
-            width: screenAwareHeight(200, context),
-            height: screenAwareHeight(200, context),
+            width: screenAwareWidth(200, context),
+            height: screenAwareWidth(200, context),
             alignment: Alignment(0.5, 0.5),
             decoration: BoxDecoration(
               borderRadius:
-                  BorderRadius.circular(screenAwareHeight(100, context)),
+                  BorderRadius.circular(screenAwareWidth(100, context)),
               gradient: LinearGradient(
                 colors: colors,
                 begin: Alignment.bottomLeft,
@@ -71,17 +71,17 @@ class _HeaderState extends State<Header> {
           ),
         ),
         Positioned(
-          top: -70,
-          left: -35,
+          top: screenAwareWidth(-70, context),
+          left: screenAwareWidth(-35, context),
           child: AnimatedContainer(
             duration: Duration(seconds: 2),
-            width: screenAwareHeight(280, context),
-            height: screenAwareHeight(280, context),
+            width: screenAwareWidth(280, context),
+            height: screenAwareWidth(280, context),
             alignment: Alignment(-0.2, 0),
             decoration: BoxDecoration(
               color: Colors.orange,
               borderRadius: BorderRadius.circular(
-                screenAwareHeight(140, context),
+                screenAwareWidth(140, context),
               ),
               gradient: LinearGradient(
                 colors: colors,

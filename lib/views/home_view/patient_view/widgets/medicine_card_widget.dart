@@ -47,7 +47,7 @@ class MedicineCard extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w300,
-                    fontSize: 19),
+                    fontSize: screenAwareWidth(18, context)),
               ),
               Divider(
                 color: Colors.white,

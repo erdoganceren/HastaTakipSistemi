@@ -27,8 +27,9 @@ class SignupTcTextField extends StatelessWidget {
           keyboardType: textInputType,
           textInputAction: TextInputAction.done,
           cursorColor: UIHelper.textFieldCursorColor,
-          style: themeData.textTheme.display1,
+          style: themeData.textTheme.display1.copyWith(fontSize: screenAwareWidth(12, context)),
           decoration: InputDecoration(
+             contentPadding: new EdgeInsets.symmetric(vertical: screenAwareHeight(14.0,context), horizontal: screenAwareWidth(10.0,context)),
             hintText: hintText,
           ),
           validator: signupValidation.tcValidation,

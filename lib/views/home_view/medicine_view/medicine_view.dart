@@ -36,13 +36,14 @@ class MedicineView extends StatelessWidget {
                     ListTile(
                       title: Text(medicine.name,
                           style: themeData.textTheme.display1
-                              .copyWith(fontWeight: FontWeight.w600)),
+                              .copyWith(fontWeight: FontWeight.w600,fontSize: screenAwareWidth(16, context))),
                       subtitle: Text(medicine.detail,
                           style: themeData.textTheme.display1
-                              .copyWith(fontWeight: FontWeight.w300)),
+                              .copyWith(fontWeight: FontWeight.w300,fontSize: screenAwareWidth(14, context))),
                       leading: Icon(
                         Icons.local_hospital,
                         color: Colors.red,
+                        size:  screenAwareWidth(18, context)
                       ),
                     ),
                     Divider(
@@ -55,7 +56,7 @@ class MedicineView extends StatelessWidget {
                       title: Text(
                           "Bu ilaç günde ${medicineTimes.length} kere kullanılmalıdır.",
                           style: themeData.textTheme.display1.copyWith(
-                              fontWeight: FontWeight.w300, fontSize: 16)),
+                              fontWeight: FontWeight.w300, fontSize: screenAwareWidth(16, context))),
                     ),
                     Divider(
                       height: screenAwareHeight(1, context),

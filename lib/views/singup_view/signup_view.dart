@@ -18,7 +18,7 @@ class SignupView extends StatelessWidget {
     return BaseView(
       companyTitle: true,
       footerTitle: true,
-      positionedTop: screenAwareHeight(220, context),
+      positionedTop: screenAwareHeight(246, context),
       child: Container(
         alignment: Alignment.center,
         child: Form(
@@ -31,10 +31,11 @@ class SignupView extends StatelessWidget {
 
   Widget body(context) => Container(
         width: double.infinity,
-        height: screenAwareHeight(455, context),
+        height: screenAwareHeight(430, context),
         child: Column(
           children: [
             titleMember,
+            Spacer(flex:1),
             tcTextField,
             passwordTextField,
             confirmPasswordTextField,
@@ -45,32 +46,32 @@ class SignupView extends StatelessWidget {
         ),
       );
   Widget get titleMember => Expanded(
-        flex: 3,
+        flex: 4,
         child: TitleField(),
       );
   Widget get tcTextField => Expanded(
-        flex: 3,
+        flex: 4,
         child: SignupTcTextField(
           textInputType: TextInputType.number,
           hintText: UIHelper.tcHintText,
         ),
       );
   Widget get passwordTextField => Expanded(
-        flex: 3,
+        flex: 4,
         child: SignupPasswordField(
           textInputType: TextInputType.text,
           hintText: UIHelper.passwordHintText,
         ),
       );
   Widget get confirmPasswordTextField => Expanded(
-        flex: 3,
+        flex: 4,
         child: SignupConfirmPasswordField(
           textInputType: TextInputType.text,
           hintText: UIHelper.confirmPasswordHintText,
         ),
       );
   Widget signupSubmitButton(context) => Expanded(
-        flex: 4,
+        flex: 5,
         child: Center(
           child: SubmitButton(
             text: UIHelper.signupSubmitButtonText,

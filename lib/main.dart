@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'XXX Takip Sistemi',
+      title: 'Bireysel Takip Sistemi',
       debugShowCheckedModeBanner: false,
       theme: themeData,
       home: _getStartupScreen(),

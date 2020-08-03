@@ -6,7 +6,7 @@ import '../../../ui_helper.dart';
 
 Widget SearchBarTextfield(BuildContext context) => TextField(
       controller: Provider.of<SearchBarProcess>(context).controller,
-      style: TextStyle(color: Colors.black87),
+      style: TextStyle(color: Colors.black87,fontSize:screenAwareWidth(12, context)),
       cursorColor: UIHelper.searchBarCusorColor,
       keyboardType: TextInputType.text,
       onChanged: (value) {

@@ -52,14 +52,14 @@ class _CheckBoxState extends State<CheckBox> {
                 children: [
                   Icon(Icons.av_timer,
                       color: isSelected ? Colors.white : Colors.black,
-                      size: 28),
+                      size: screenAwareWidth(28, context)),
                   SizedBox(
                     width: screenAwareWidth(20, context),
                   ),
                   Text(
                     widget.time,
                     style: themeData.textTheme.display1.copyWith(
-                        color: isSelected ? Colors.white : Colors.black),
+                        color: isSelected ? Colors.white : Colors.black,fontSize: screenAwareWidth(16, context)),
                   ),
                 ],
               ),
@@ -82,7 +82,11 @@ class _CheckBoxState extends State<CheckBox> {
           padding: EdgeInsets.zero,
           icon: Icon(Icons.settings),
           onPressed: () {
-            numberPicker();
+            var model = Provider.of<LoginValidation>(context,listen:false).userModel;
+            if (model is Patient){
+              numberPicker();
+            }
+            
           }),
     );
   }
@@ -92,6 +96,8 @@ class _CheckBoxState extends State<CheckBox> {
     int minute = int.parse(widget.time.split(".")[1]);
 
     Picker(
+      height: screenAwareHeight(200, context),
+      
         adapter: NumberPickerAdapter(data: [
           NumberPickerColumn(
             begin: 0,
@@ -106,10 +112,12 @@ class _CheckBoxState extends State<CheckBox> {
         ]),
         hideHeader: false,
         cancelText: "Vazgeç",
+
         confirmText: "Onayla",
+
         builderHeader: (context) => Container(
               child: Text("İlaç Saatini Güncelle",
-                  style: themeData.textTheme.display1),
+                  style: themeData.textTheme.display1.copyWith(fontSize:screenAwareWidth(14,context))),
             ),
         onConfirm: (Picker picker, List value) {
           Patient model =

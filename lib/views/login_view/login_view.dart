@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
-import 'package:myf2app/theme/theme.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/ui_helper.dart';
-import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/header_widget.dart';
 import '../base_view.dart';
 import 'widgets/create_account_widget.dart';
 import 'widgets/password_fied_widget.dart';
@@ -23,11 +19,7 @@ class LoginView extends StatelessWidget {
       positionedTop: screenAwareHeight(220, context),
       child: Form(
         key: loginValidation.formKey,
-        child: Column(
-          children: [
-            body(context),
-          ],
-        ),
+        child: body(context),
       ),
     );
   }
@@ -58,6 +50,7 @@ class LoginView extends StatelessWidget {
         child: PasswordField(
           textInputType: TextInputType.text,
           hintText: UIHelper.passwordHintText,
+          
         ),
       );
   Widget loginSubmitButton(context) => Expanded(

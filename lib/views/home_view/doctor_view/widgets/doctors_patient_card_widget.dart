@@ -14,43 +14,55 @@ class DoctorsPatientCard extends StatelessWidget {
   const DoctorsPatientCard({Key key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () {
-          Provider.of<DoctorPatientCardProcess>(context, listen: false)
-              .currentPatientTc = model.tc;
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PatientDetail(
-                  model: model,
+    return InkWell(
+      onTap: () {
+        Provider.of<DoctorPatientCardProcess>(context, listen: false)
+                .currentPatientTc = model.tc;
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PatientDetail(
+                    model: model,
+                  ),
+                ));
+      },
+          child: Card(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal:screenAwareWidth(10,context),vertical:screenAwareHeight(6,context)),
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          Row(children: [
+              CachedNetworkImage(
+                  imageUrl: model.imgUrl,
+                  imageBuilder: (context, imageProvider) => CircleAvatar(
+                        backgroundImage: imageProvider,
+                        radius: screenAwareHeight(30, context),
+                      ),
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  height: screenAwareHeight(60, context),
+                  width: screenAwareHeight(60, context),
+                  fit: BoxFit.contain),
+              SizedBox(width:screenAwareWidth(16,context)),
+              Text(
+                "${model.name} ${model.lastname}",
+                textAlign: TextAlign.center,
+                style: themeData.textTheme.display4.copyWith(
+                  fontSize: screenAwareWidth(13, context),
+                  color: Colors.black.withOpacity(0.6),
                 ),
-              ));
-        },
-        contentPadding: EdgeInsets.all(4),
-        leading: CachedNetworkImage(
-            imageUrl: model.imgUrl,
-            imageBuilder: (context, imageProvider) => CircleAvatar(
-                  backgroundImage: imageProvider,
-                  radius: screenAwareHeight(30, context),
-                ),
-            placeholder: (context, url) => CircularProgressIndicator(),
-            errorWidget: (context, url, error) => Icon(Icons.error),
-            fit: BoxFit.contain),
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            "${model.name} ${model.lastname}",
-            textAlign: TextAlign.center,
-            style: themeData.textTheme.display4.copyWith(
-              color: Colors.black.withOpacity(0.6),
             ),
-          ),
-        ),
-        trailing: IconButton(
-            icon: Icon(Icons.arrow_forward_ios,
-                color: UIHelper.colorPrimary.withOpacity(0.6)),
-            onPressed: () {}),
+          ],),
+          
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios,
+              size: screenAwareWidth(20, context),
+                  color: UIHelper.colorPrimary.withOpacity(0.6)),
+              onPressed: () {}),
+        ],)),
+        
+        
       ),
     );
   }

@@ -17,7 +17,9 @@ class SubmitButton extends StatelessWidget {
       children: [
         Container(
           height: screenAwareHeight(40, context),
+          width: screenAwareWidth(300, context),
           child: RaisedButton(
+            
             onPressed: onTap,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(80.0)),
@@ -31,12 +33,12 @@ class SubmitButton extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(30.0)),
               child: Container(
-                constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                constraints: BoxConstraints(maxWidth: screenAwareWidth(300.0,context), minHeight: screenAwareHeight(50.0,context)),
                 alignment: Alignment.center,
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontSize: screenAwareWidth(12, context)),
                 ),
               ),
             ),

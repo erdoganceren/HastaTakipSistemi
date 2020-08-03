@@ -41,6 +41,7 @@ Widget patientCard({
                   "${model.name}\n${model.lastname}",
                   textAlign: TextAlign.center,
                   style: themeData.textTheme.display3.copyWith(
+                    fontSize:screenAwareWidth(16, context),
                     color: Colors.white.withOpacity(0.8),
                   ),
                 ),
@@ -66,7 +67,7 @@ Widget _cardRightSide({context, model}) {
   if (loginType is Patient) {
     return _cardInformation(
         title: "Doktorum",
-        telNo: Doctor.searchDoctor(model.doctor).telephoneNo);
+        telNo: Doctor.searchDoctor(model.doctor).telephoneNo,context:context);
   } else if (loginType is Doctor) {
     return _cardInformation(
         title: "Hastam", telNo: model.telephoneNo, context: context);
@@ -83,6 +84,7 @@ Widget _cardInformation({String title, String telNo, context}) => Column(
           title,
           style: themeData.textTheme.display3.copyWith(
             color: Colors.white.withOpacity(0.8),
+            fontSize: screenAwareHeight(18, context)
           ),
         ),
         Row(
@@ -91,14 +93,17 @@ Widget _cardInformation({String title, String telNo, context}) => Column(
                 icon: Icon(
                   Icons.call,
                   color: Colors.red,
+                  size: screenAwareWidth(22, context),
                 ),
                 onPressed: () {
                   _launchCaller("tel:$telNo");
                 }),
+            SizedBox(width:screenAwareWidth(10,context)),
             IconButton(
                 icon: Icon(
                   Icons.mail,
                   color: Colors.yellow,
+                  size: screenAwareWidth(22, context),
                 ),
                 onPressed: () {
                   _launchCaller("sms:$telNo");

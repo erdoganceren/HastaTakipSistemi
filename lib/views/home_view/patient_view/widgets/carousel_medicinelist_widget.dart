@@ -13,7 +13,7 @@ class CarouselMedicineList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: screenAwareWidth(375, context),
-      height: screenAwareHeight(250, context),
+      height: screenAwareHeight(230, context),
       child: CarouselSlider.builder(
         options: CarouselOptions(
           enlargeCenterPage: true,

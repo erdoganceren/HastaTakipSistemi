@@ -15,34 +15,21 @@ class PatientView extends StatelessWidget {
   LocalNotification notif = LocalNotification.getInstance();
   @override
   Widget build(BuildContext context) {
-    /*Future fx(String payload) async {
-      showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-                title: Text("Payload", style: themeData.textTheme.display2),
-                content: Text("$payload", style: themeData.textTheme.display2),
-              ));
-    }
-
-    notif.setOnSelectNotification(fx);
-    notif.showNotificationPlans().then((value) {
-      for (var v in value) {
-        print(v.id);
-      }
-    });
-    */
-    return Column(
-      children: [
-        patientCard(context: context, model: model),
-        patientActivity(model: model),
-        Divider(
-          height: screenAwareHeight(10, context),
-          indent: screenAwareWidth(12, context),
-          endIndent: screenAwareWidth(12, context),
-        ),
-        takeMedicineText,
-        CarouselMedicineList(model: model),
-      ],
+    return Container(
+   
+      child: Column(
+        children: [
+          patientCard(context: context, model: model),
+          patientActivity(model: model),
+          Divider(
+            height: screenAwareHeight(10, context),
+            indent: screenAwareWidth(12, context),
+            endIndent: screenAwareWidth(12, context),
+          ),
+          takeMedicineText(context),
+          CarouselMedicineList(model: model),
+        ],
+      ),
     );
   }
 }

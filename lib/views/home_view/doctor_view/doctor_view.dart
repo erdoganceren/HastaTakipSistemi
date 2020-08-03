@@ -38,7 +38,7 @@ class DoctorView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      patientsText,
+                      patientsText(context),
                       Expanded(
                           child: Container(
                               height: 1, color: Colors.blue.withOpacity(0.6)))

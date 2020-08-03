@@ -6,8 +6,6 @@ import 'package:myf2app/views/login_view/login_view.dart';
 import 'package:myf2app/views/singup_view/signup_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/core/navigationAnimation/fade_route_widget.dart';
-import 'package:myf2app/widgets/footer_widget.dart';
-import 'package:myf2app/widgets/header_widget.dart';
 import 'package:myf2app/widgets/submit_button_widget.dart';
 
 class StartView extends StatelessWidget {
@@ -17,27 +15,27 @@ class StartView extends StatelessWidget {
       scrollPhysics: NeverScrollableScrollPhysics(),
       companyTitle: true,
       footerTitle: true,
-      positionedTop: screenAwareHeight(220, context),
+      positionedTop: screenAwareHeight(260, context),
       child: Column(
         children: [
-          title,
+          title(context),
           signupButton(context),
           loginButton(context),
-          Spacer(flex: 3),
+          Spacer(flex: 2),
         ],
       ),
     );
   }
 
-  Widget get title => Expanded(
+  Widget title(context) => Expanded(
         flex: 16,
         child: Text(
           UIHelper.startHeaderText,
-          style: themeData.textTheme.headline,
+          style: themeData.textTheme.headline.copyWith(fontSize:screenAwareWidth(36,context)),
         ),
       );
   Widget signupButton(context) => Expanded(
-        flex: 4,
+        flex: 5,
         child: SubmitButton(
           onTap: () {
             Navigator.pushReplacement(context, FadeRoute(page: SignupView()));
@@ -46,7 +44,7 @@ class StartView extends StatelessWidget {
         ),
       );
   Widget loginButton(context) => Expanded(
-        flex: 4,
+        flex: 5,
         child: SubmitButton(
           onTap: () {
             Navigator.pushReplacement(context, FadeRoute(page: LoginView()));

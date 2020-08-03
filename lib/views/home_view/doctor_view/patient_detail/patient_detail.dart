@@ -23,7 +23,7 @@ class PatientDetail extends StatelessWidget {
           headerBackButton(
               context: context, color: UIHelper.colorPrimary.withOpacity(0.6)),
           Positioned(
-              top: screenAwareHeight(90, context),
+              top: screenAwareWidth(90, context),
               left: 0,
               right: 0,
               child: Column(
@@ -35,7 +35,7 @@ class PatientDetail extends StatelessWidget {
                     indent: 25,
                     endIndent: 25,
                   ),
-                  takeMedicineText,
+                  takeMedicineText(context),
                   CarouselMedicineList(
                     model: model,
                   ),

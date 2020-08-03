@@ -32,6 +32,7 @@ Widget doctorCard({context, Doctor model}) {
               "${model.name}\n${model.lastname}",
               textAlign: TextAlign.center,
               style: themeData.textTheme.display3.copyWith(
+                fontSize:screenAwareWidth(16, context),
                 color: Colors.white.withOpacity(0.8),
               ),
             ),

@@ -10,5 +10,6 @@ Widget headerBackButton({BuildContext context, Color color}) => Positioned(
       child: Icon(
         Icons.arrow_back,
         color: Colors.white,
+        size:screenAwareWidth(22, context)
       ),
     ),);
