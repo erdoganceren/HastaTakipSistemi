@@ -4,14 +4,16 @@ import 'package:myf2app/core/adminProcesses/admin_processes.dart';
 import 'package:myf2app/core/doctorProcesses/doctor_patient_card_process.dart';
 import 'package:myf2app/core/doctorProcesses/search_bar_process.dart';
 import 'package:provider/provider.dart';
-import 'core/localNotification/local_notification.dart';
 import 'core/loginProcesses/login_validation.dart';
+import 'core/services/service.dart';
 import 'core/signupProcesses/signup_validation.dart';
 import 'theme/theme.dart';
 import 'views/home_view/home_view.dart';
 import 'views/start_view/start_view.dart';
 
 void main() {
+  Service service = Service();
+
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
   runApp(

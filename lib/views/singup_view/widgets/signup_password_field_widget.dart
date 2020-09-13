@@ -24,9 +24,12 @@ class SignupPasswordField extends StatelessWidget {
           autocorrect: false,
           obscureText: Provider.of<SignupValidation>(context, listen: true)
               .hiddenPassword,
-          style: themeData.textTheme.display1.copyWith(fontSize: screenAwareWidth(12, context)),
+          style: themeData.textTheme.display1
+              .copyWith(fontSize: screenAwareWidth(12, context)),
           decoration: InputDecoration(
-             contentPadding: new EdgeInsets.symmetric(vertical: screenAwareHeight(14.0,context), horizontal: screenAwareWidth(10.0,context)),
+              contentPadding: new EdgeInsets.symmetric(
+                  vertical: screenAwareHeight(14.0, context),
+                  horizontal: screenAwareWidth(10.0, context)),
               hintText: hintText,
               suffixIcon: IconButton(
                 icon: Provider.of<SignupValidation>(context, listen: true)

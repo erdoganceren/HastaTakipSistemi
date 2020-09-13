@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/core/services/service.dart';
 import 'package:myf2app/views/ui_helper.dart';
 
 class SignupValidation with ChangeNotifier {
@@ -58,13 +59,27 @@ class SignupValidation with ChangeNotifier {
     // verileri 'Aday Üye' tablosuna ekle
     // kayıt olan kullanıcı artık aday bir üyedir. Onaylanmasını bekleyecek.
     if (_formKey.currentState.validate()) {
+      Service service = Service.getInstance();
+      String usersType = typeOfUser(titleList);
+      service.register(tcno, usersType, password);
       _text = UIHelper.confirmSignupText;
       notifyListeners();
+
       return true;
     }
     _text = "";
     notifyListeners();
     return false;
+  }
+
+  String typeOfUser(List value) {
+    if (value[0] == true) {
+      return "D";
+    } else if (value[1] == true) {
+      return "H";
+    } else {
+      return "Y";
+    }
   }
 
   String confirmPasswordValidation(String value) {

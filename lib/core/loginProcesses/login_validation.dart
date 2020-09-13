@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myf2app/core/services/service.dart';
 import 'package:myf2app/models/doctor.dart';
 import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/utils/temp_datas.dart';
@@ -41,10 +42,10 @@ class LoginValidation with ChangeNotifier {
     notifyListeners();
   }
 
-  bool loginValidate(BuildContext context) {
+  Future<bool> loginValidate(BuildContext context) async {
     // service ile tcler şifreler getirelecek
     if (formKey.currentState.validate()) {
-      print("0");
+      /*print("0");
       var users = TempData.users;
       print("1");
       for (dynamic user in users) {
@@ -62,7 +63,26 @@ class LoginValidation with ChangeNotifier {
           return true;
         }
       }
-      _text = "Geçersiz giriş";
+      */
+      Service service = Service.getInstance();
+      _text = await service.login(_tcno, _password);
+      if (_text == "Giriş Başarılı") {
+        // user type çek
+        var user;
+        if (true) // user doctor ise user = new Doctor(...)
+        {
+        } else if (false) // user hasta ise user = new Patient(...)
+        {
+        } else // user hasta yakını ise user = new PatientRelavtive(...)
+        {}
+        _userModel = user;
+        Navigator.pushReplacement(
+          context,
+          FadeRoute(
+            page: HomeView(),
+          ),
+        );
+      }
       notifyListeners();
       return false;
     }
