@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/core/localNotification/notification_helper.dart';
 import 'package:myf2app/core/loginProcesses/login_validation.dart';
 import 'package:myf2app/models/admin.dart';
 import 'package:myf2app/models/doctor.dart';
-import 'package:myf2app/models/medicine.dart';
 import 'package:myf2app/models/patient.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/views/home_view/admin_view/admin_view.dart';

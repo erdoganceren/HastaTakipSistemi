@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/services/service.dart';
-import 'package:myf2app/models/doctor.dart';
-import 'package:myf2app/models/patient.dart';
-import 'package:myf2app/utils/temp_datas.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/core/navigationAnimation/fade_route_widget.dart';

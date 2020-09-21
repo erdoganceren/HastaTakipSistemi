@@ -14,6 +14,10 @@ class UIHelper {
   static const String tcLenghtRequiredText =
       "TC kimlik numarası 11 haneli olmalıdır";
   static const String tcHintText = "TC Kimlik No";
+  static const String nameRequiredText = "Lütfen ad ve soyad girin";
+  static const String nameHintText = "Ad Soyad";
+  static const String telRequiredText = "Lütfen telefon numarası girin";
+  static const String telHintText = "Tel No";
   static const String passwordRequiredText = "Lütfen şifrenizi girin";
   static const String passwordHintText = "Şifre";
   static const String confirmPasswordRequiredText =

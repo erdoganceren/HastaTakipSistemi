@@ -3,6 +3,8 @@ import 'package:myf2app/core/services/service.dart';
 import 'package:myf2app/views/ui_helper.dart';
 
 class SignupValidation with ChangeNotifier {
+  String _telno;
+  String _name;
   String _tcno;
   String _password;
   String _confirmPassword;
@@ -21,6 +23,8 @@ class SignupValidation with ChangeNotifier {
   }
   SignupValidation._internal();
 
+  get telno => _telno;
+  get name => _name;
   get tcno => _tcno;
   get password => _password;
   get confirmPassword => _confirmPassword;
@@ -29,6 +33,8 @@ class SignupValidation with ChangeNotifier {
   get hiddenPassword => _hiddenPassword;
   get visibilityIcon => _visibilityIcon;
   get text => _text;
+  set telno(String telno) => _telno = telno;
+  set name(String name) => _name = name;
   set tcno(String tcno) => _tcno = tcno;
   set password(String password) {
     _password = password;
@@ -61,7 +67,7 @@ class SignupValidation with ChangeNotifier {
     if (_formKey.currentState.validate()) {
       Service service = Service.getInstance();
       String usersType = typeOfUser(titleList);
-      service.register(tcno, usersType, password);
+      service.register(tcno, usersType, password, name, telno);
       _text = UIHelper.confirmSignupText;
       notifyListeners();
 
@@ -102,6 +108,20 @@ class SignupValidation with ChangeNotifier {
     }
     if (value.length < 11) {
       return UIHelper.tcLenghtRequiredText;
+    }
+    return null;
+  }
+
+  String nameValidation(String value) {
+    if (value.isEmpty) {
+      return UIHelper.nameRequiredText;
+    }
+    return null;
+  }
+
+  String telnoValidation(String value) {
+    if (value.isEmpty) {
+      return UIHelper.telRequiredText;
     }
     return null;
   }
