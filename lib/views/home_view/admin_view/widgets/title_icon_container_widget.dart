@@ -33,7 +33,7 @@ class TitleIconContainer extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: color,
-                  fontSize: screenAwareWidth(11, context),
+                  fontSize: screenAwareWidth(10, context),
                   fontWeight: FontWeight.bold),
             )
           ],

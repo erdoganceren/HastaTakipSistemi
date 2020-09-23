@@ -4,7 +4,7 @@ class UIHelper {
   // STRING
   // genel
   static const String developedByText = "İZKA TARAFINDAN DESTEKLENMEKTEDİR";
-  static const String companyText = "Aktivİz";
+  static const String companyText = "Aktifİz";
   // startView
   static const String startHeaderText = "Sağlıklı Yaşam";
   static const String startSignUpButtonText = "Kayıt Ol";

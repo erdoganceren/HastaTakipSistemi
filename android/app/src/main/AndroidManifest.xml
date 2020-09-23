@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Aktivİz"
+        android:label="Aktifİz"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
