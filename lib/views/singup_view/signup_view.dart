@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myf2app/core/signupProcesses/signup_validation.dart';
 import 'package:myf2app/utils/utils.dart';
-import 'package:myf2app/views/singup_view/widgets/signup_name_field_widget.dart';
 import 'package:myf2app/views/singup_view/widgets/signup_password_field_widget.dart';
-import 'package:myf2app/views/singup_view/widgets/signup_telno_field_widget.dart';
 import 'package:myf2app/views/singup_view/widgets/signup_text_field_widget.dart';
 import 'package:myf2app/widgets/submit_button_widget.dart';
 import 'package:provider/provider.dart';
@@ -37,14 +35,9 @@ class SignupView extends StatelessWidget {
         child: Column(
           children: [
             titleMember,
-            Spacer(flex: 1),
+            Spacer(flex:1),
             tcTextField,
-            nameSurnameTextField,
-            Spacer(flex: 1),
-            telNoTextField,
-            Spacer(flex: 1),
             passwordTextField,
-            Spacer(flex: 1),
             confirmPasswordTextField,
             signupSubmitButton(context),
             alreadyHaveAccountButton(context),
@@ -63,27 +56,15 @@ class SignupView extends StatelessWidget {
           hintText: UIHelper.tcHintText,
         ),
       );
-  Widget get nameSurnameTextField => Expanded(
-      flex: 3,
-      child: SignupNameField(
-        textInputType: TextInputType.text,
-        hintText: UIHelper.nameHintText,
-      ));
-  Widget get telNoTextField => Expanded(
-      flex: 3,
-      child: SignupTelNoField(
-        textInputType: TextInputType.number,
-        hintText: UIHelper.telHintText,
-      ));
   Widget get passwordTextField => Expanded(
-        flex: 3,
+        flex: 4,
         child: SignupPasswordField(
           textInputType: TextInputType.text,
           hintText: UIHelper.passwordHintText,
         ),
       );
   Widget get confirmPasswordTextField => Expanded(
-        flex: 3,
+        flex: 4,
         child: SignupConfirmPasswordField(
           textInputType: TextInputType.text,
           hintText: UIHelper.confirmPasswordHintText,
