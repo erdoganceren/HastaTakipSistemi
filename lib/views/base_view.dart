@@ -3,6 +3,7 @@ import 'package:myf2app/core/localNotification/local_notification.dart';
 import 'package:myf2app/utils/utils.dart';
 import 'package:myf2app/widgets/footer_widget.dart';
 import 'package:myf2app/widgets/header_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'login_view/login_view.dart';
 
 class BaseView extends StatelessWidget {
@@ -42,10 +43,13 @@ class BaseView extends StatelessWidget {
               ),
               exitButton
                   ? Positioned(
-                      top: screenAwareHeight(40,context),
-                      right: screenAwareWidth(10,context),
+                      top: screenAwareHeight(40, context),
+                      right: screenAwareWidth(10, context),
                       child: IconButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          SharedPreferences pref =
+                              await SharedPreferences.getInstance();
+                          pref.setString("username", null);
                           LocalNotification notif =
                               LocalNotification.getInstance();
                           notif
@@ -54,7 +58,8 @@ class BaseView extends StatelessWidget {
                               MaterialPageRoute(builder: (_) => LoginView()));
                         },
                         icon: Icon(Icons.exit_to_app,
-                            size: screenAwareWidth(26,context), color: Colors.white),
+                            size: screenAwareWidth(26, context),
+                            color: Colors.white),
                       ),
                     )
                   : SizedBox(height: 0),
@@ -67,9 +72,9 @@ class BaseView extends StatelessWidget {
                     child: child,
                   )),
               Positioned(
-                  bottom: screenAwareHeight(10,context),
-                  right: screenAwareWidth(10,context),
-                  left: screenAwareWidth(10,context),
+                  bottom: screenAwareHeight(10, context),
+                  right: screenAwareWidth(10, context),
+                  left: screenAwareWidth(10, context),
                   child: footerTitle
                       ? footer(context)
                       : SizedBox(

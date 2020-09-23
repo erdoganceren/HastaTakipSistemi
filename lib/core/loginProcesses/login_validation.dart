@@ -5,6 +5,7 @@ import 'package:myf2app/utils/temp_datas.dart';
 import 'package:myf2app/views/home_view/home_view.dart';
 import 'package:myf2app/views/ui_helper.dart';
 import 'package:myf2app/core/navigationAnimation/fade_route_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginValidation with ChangeNotifier {
   String _tcno;
@@ -31,7 +32,7 @@ class LoginValidation with ChangeNotifier {
   get visibilityIcon => _visibilityIcon;
   set tcno(String tcno) => _tcno = tcno;
   set password(String password) => _password = password;
-
+  set userModel(value) => _userModel = value;
   void setHiddenPassword() {
     _hiddenPassword = !_hiddenPassword;
     if (_visibilityIcon == UIHelper.visibility)
@@ -41,7 +42,7 @@ class LoginValidation with ChangeNotifier {
     notifyListeners();
   }
 
-  bool loginValidate(BuildContext context) {
+  Future<bool> loginValidate(BuildContext context) async {
     // service ile tcler şifreler getirelecek
     if (formKey.currentState.validate()) {
       print("0");
@@ -50,6 +51,8 @@ class LoginValidation with ChangeNotifier {
       for (dynamic user in users) {
         print("3");
         if (_tcno == user.tc && _password == user.password) {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("username", user.tc);
           _userModel = user;
           Navigator.pushReplacement(
             context,
